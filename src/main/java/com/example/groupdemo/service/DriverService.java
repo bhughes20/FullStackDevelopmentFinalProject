@@ -15,6 +15,6 @@ public class DriverService {
     }
 
     public Driver getDriverByID(Long Id){
-        return driverRepository.getById(Id);
+        return driverRepository.findById(Id).get();
     }
 }

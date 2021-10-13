@@ -1,6 +1,9 @@
-INSERT INTO Driver
-VALUES (1, 'Dr', 'Sherlock', 'Holmes', '01234567891',
-        '221b', 'Baker Street', 'London', 'NW1 6XE',
-        'Coupe', '2000', 1, 'Yes', 'Yes',
-        '£20,001 to £30,000', '2000-04-03T09:20:19.000Z',
-        );
+INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
+                    COMMERCIAL_PURPOSE, CURRENT_VALUE, ENGINE_SIZE,	FIRST_NAME,
+                    LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX
+    ,REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
+VALUES (1, 1, '221b', 'Baker Street', 'London', 'Yes',
+        '£20,001 to £30,000', '2000', 'Sherlock', 'Holmes',
+        'Yes', 'NW1 6XE', 'Dr', '2000-04-03',
+        '01234567891', 'Coupe'
+       );
