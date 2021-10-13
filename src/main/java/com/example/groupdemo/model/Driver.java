@@ -26,12 +26,12 @@ public class Driver {
     private String commercialPurpose;
     private String outOfRegisteredState;
     private String currentValue;
-    private Date registrationDate;
+    private String registrationDate;
 
     public Driver() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurpose, String outOfRegisteredState, String currentValue, Date registrationDate) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurpose, String outOfRegisteredState, String currentValue, String registrationDate) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -170,11 +170,11 @@ public class Driver {
         this.currentValue = currentValue;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 }
