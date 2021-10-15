@@ -2,7 +2,6 @@ package com.example.groupdemo.service;
 
 import com.example.groupdemo.model.Driver;
 import com.example.groupdemo.repository.DriverRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class DriverService {
         return driverRepository.save(driver);
     }
 
-    public Driver putDriver(Driver driverToUpdate, Long id){
+ /*   public Driver putDriver(Driver driverToUpdate, Long id){
         return driverRepository.findById(id)
                 .map(driver -> {
                     driver.setAdditionalDrivers(driverToUpdate.getAdditionalDrivers());
@@ -47,10 +46,14 @@ public class DriverService {
                     driver.setVehicleType(driverToUpdate.getVehicleType());
                     return driverRepository.save(driver);
                 })
-                .orElseGet(() -> {
-                    return driverRepository.save(driverToUpdate);
-                });
+                .orElseGet(() -> driverRepository.save(driverToUpdate));
     }
+  */
+
+    public Driver updateDriverTelephoneNumberById(String newTelephoneNumber, Long id){
+        Driver driver = driverRepository.findById(id).get();
+        driver.setTelephoneNumber(newTelephoneNumber);
+        return driverRepository.save(driver);    }
 
     public void deleteDriverById(Long id) {
         driverRepository.deleteById(id);

@@ -31,10 +31,17 @@ public class DriverController {
         return service.postDriver(driver);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+ /*   @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/drivers/{id}")
     Driver putDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id){
         return service.putDriver(driverToUpdate, id);
+    }
+  */
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/drivers/{id}")
+    Driver updateDriverTelephoneNumberById(@RequestBody String newTelephoneNumber, @PathVariable Long id) {
+        return service.updateDriverTelephoneNumberById(newTelephoneNumber, id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -42,6 +49,4 @@ public class DriverController {
     void deleteDriverById(@PathVariable Long id){
         service.deleteDriverById(id);
     }
-
-
 }
