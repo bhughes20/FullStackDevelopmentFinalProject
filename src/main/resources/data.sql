@@ -7,3 +7,33 @@ VALUES (1, 1, '221b', 'Baker Street', 'London', 'Yes',
         'Yes', 'NW1 6XE', 'Dr', '2000-04-03',
         '01234567891', 'Coupe'
        );
+
+INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
+                    COMMERCIAL_PURPOSE, CURRENT_VALUE, ENGINE_SIZE,	FIRST_NAME,
+                    LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX
+    ,REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
+VALUES (2, 2, '742', 'Evergreen Terrace', 'Springfield', 'No',
+        '£5,001 to £10,000', '1600', 'Marge', 'Simpson',
+        'Yes', '89011', 'Mrs', '1987-12-17',
+        '10987654321', 'Hatchback'
+       );
+
+INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
+                    COMMERCIAL_PURPOSE, CURRENT_VALUE, ENGINE_SIZE,	FIRST_NAME,
+                    LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX
+    ,REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
+VALUES (3, 2, '15', 'Yemen Road', 'Yemen', 'No',
+        '£20,001 to £30,000', '3000', 'Chandler', 'Bing',
+        'Yes', '11111', 'Mr', '1998-02-26',
+        '00000000001', 'Cabriolet'
+       );
+
+INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
+                    COMMERCIAL_PURPOSE, CURRENT_VALUE, ENGINE_SIZE,	FIRST_NAME,
+                    LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX
+    ,REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
+VALUES (4, 1, '42', 'Wallaby Way', 'Sydney', 'Yes',
+        '£30,001 to £40,000', '2500', 'Philip', 'Sherman',
+        'Yes', 'SY12 3AU', 'Dr', '2003-10-10',
+        '61412345678', 'Estate'
+       );

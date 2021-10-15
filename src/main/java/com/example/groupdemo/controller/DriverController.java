@@ -2,9 +2,9 @@ package com.example.groupdemo.controller;
 
 import com.example.groupdemo.model.Driver;
 import com.example.groupdemo.service.DriverService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class DriverController {
@@ -15,9 +15,32 @@ public class DriverController {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/drivers/{id}")
+    Driver getDriverById(@PathVariable Long id){
+        return service.getDriverById(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers")
-    Driver getDriverById(@RequestParam("id") Long Id){
-        return service.getDriverByID(Id);
+    List<Driver> getAllDrivers(){ return service.getAllDrivers(); }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/drivers")
+    Driver postDriver(@RequestBody Driver driver){
+        return service.postDriver(driver);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/drivers/{id}")
+    Driver putDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id){
+        return service.putDriver(driverToUpdate, id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/drivers/{id}")
+    void deleteDriverById(@PathVariable Long id){
+        service.deleteDriverById(id);
     }
 
 
