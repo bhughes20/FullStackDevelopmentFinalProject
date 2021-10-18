@@ -22,7 +22,7 @@ public class Driver {
     private String vehicleType;
     private String engineSize;
     private int additionalDrivers;
-    private String commercialPurpose;
+    private String commercialPurposes;
     private String outOfRegisteredState;
     private String currentValue;
     private String registrationDate;
@@ -30,7 +30,7 @@ public class Driver {
     public Driver() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurpose, String outOfRegisteredState, String currentValue, String registrationDate) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, String currentValue, String registrationDate) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -43,7 +43,7 @@ public class Driver {
         this.vehicleType = vehicleType;
         this.engineSize = engineSize;
         this.additionalDrivers = additionalDrivers;
-        this.commercialPurpose = commercialPurpose;
+        this.commercialPurposes = commercialPurposes;
         this.outOfRegisteredState = outOfRegisteredState;
         this.currentValue = currentValue;
         this.registrationDate = registrationDate;
@@ -145,12 +145,12 @@ public class Driver {
         this.additionalDrivers = additionalDrivers;
     }
 
-    public String getCommercialPurpose() {
-        return commercialPurpose;
+    public String getCommercialPurposes() {
+        return commercialPurposes;
     }
 
-    public void setCommercialPurpose(String commercialPurpose) {
-        this.commercialPurpose = commercialPurpose;
+    public void setCommercialPurposes(String commercialPurposes) {
+        this.commercialPurposes = commercialPurposes;
     }
 
     public String getOutOfRegisteredState() {

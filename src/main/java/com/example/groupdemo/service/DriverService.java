@@ -34,7 +34,8 @@ public class DriverService {
                     driver.setAddressLine1(driverToUpdate.getAddressLine1());
                     driver.setAddressLine2(driverToUpdate.getAddressLine2());
                     driver.setCity(driverToUpdate.getCity());
-                    driver.setCommercialPurpose(driverToUpdate.getCommercialPurpose());
+                    driver.setCommercialPurposes(driverToUpdate.getCommercialPurposes());
+                    driver.setCurrentValue(driverToUpdate.getCurrentValue());
                     driver.setEngineSize(driverToUpdate.getEngineSize());
                     driver.setFirstName(driverToUpdate.getFirstName());
                     driver.setLastName(driverToUpdate.getLastName());
