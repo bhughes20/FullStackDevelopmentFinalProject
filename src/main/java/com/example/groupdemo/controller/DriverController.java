@@ -37,13 +37,6 @@ public class DriverController {
         return service.updateDriverById(driverToUpdate, id);
     }
 
-/*
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PutMapping("/drivers/{id}")
-    Driver updateDriverTelephoneNumberById(@RequestBody String newTelephoneNumber, @PathVariable Long id) {
-        return service.updateDriverTelephoneNumberById(newTelephoneNumber, id);
-    }
-*/
     @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/drivers/{id}")
     void deleteDriverById(@PathVariable Long id){

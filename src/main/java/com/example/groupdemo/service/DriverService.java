@@ -2,8 +2,6 @@ package com.example.groupdemo.service;
 
 import com.example.groupdemo.model.Driver;
 import com.example.groupdemo.repository.DriverRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,19 +48,6 @@ public class DriverService {
                 })
                 .orElseGet(() -> driverRepository.save(driverToUpdate));
     }
-
-
-    /*
-    public Driver updateDriverTelephoneNumberById(String newTelephoneNumber, Long id) throws JsonProcessingException {
-        Driver driver = driverRepository.findById(id).get();
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        driver.setTelephoneNumber(objectMapper.readValue(newTelephoneNumber, Driver.class));
-
-        return driverRepository.save(driver);
-    }
-    */
 
     public void deleteDriverById(Long id) {
         driverRepository.deleteById(id);
