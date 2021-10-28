@@ -15,8 +15,10 @@ public class DriverService {
         this.driverRepository = driverRepository;
     }
 
-    public Driver getDriverById(Long id){
-        return driverRepository.findById(id).get();
+    public Driver getDriverById(Long id) throws Exception {
+
+        return driverRepository.findById(id)
+                .orElseThrow(() -> new Exception("Driver with id " + id + " not found."));
     }
 
     public List<Driver> getAllDrivers (){

@@ -17,7 +17,7 @@ public class DriverController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers/{id}")
-    Driver getDriverById(@PathVariable Long id){
+    Driver getDriverById(@PathVariable Long id) throws Exception {
         return service.getDriverById(id);
     }
 

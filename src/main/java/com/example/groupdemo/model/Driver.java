@@ -26,11 +26,12 @@ public class Driver {
     private String outOfRegisteredState;
     private String currentValue;
     private String registrationDate;
+    private double finalQuoteAmount;
 
     public Driver() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, String currentValue, String registrationDate) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, String currentValue, String registrationDate, double finalQuoteAmount) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -47,6 +48,7 @@ public class Driver {
         this.outOfRegisteredState = outOfRegisteredState;
         this.currentValue = currentValue;
         this.registrationDate = registrationDate;
+        this.finalQuoteAmount = finalQuoteAmount;
     }
 
     public Long getId() {
@@ -175,5 +177,13 @@ public class Driver {
 
     public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public double getFinalQuoteAmount() {
+        return finalQuoteAmount;
+    }
+
+    public void setFinalQuoteAmount(double finalQuoteAmount) {
+        this.finalQuoteAmount = finalQuoteAmount;
     }
 }
