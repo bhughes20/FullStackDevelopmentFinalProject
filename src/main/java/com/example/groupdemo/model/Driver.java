@@ -24,14 +24,14 @@ public class Driver {
     private int additionalDrivers;
     private String commercialPurposes;
     private String outOfRegisteredState;
-    private String currentValue;
+    private double currentValue;
     private String registrationDate;
     private double finalQuoteAmount;
 
     public Driver() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, String currentValue, String registrationDate, double finalQuoteAmount) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, double currentValue, String registrationDate, double finalQuoteAmount) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -163,11 +163,11 @@ public class Driver {
         this.outOfRegisteredState = outOfRegisteredState;
     }
 
-    public String getCurrentValue() {
+    public double getCurrentValue() {
         return currentValue;
     }
 
-    public void setCurrentValue(String currentValue) {
+    public void setCurrentValue(double currentValue) {
         this.currentValue = currentValue;
     }
 

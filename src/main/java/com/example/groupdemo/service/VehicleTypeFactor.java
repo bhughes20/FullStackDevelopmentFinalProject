@@ -4,16 +4,17 @@ public class VehicleTypeFactor {
 
     public static double calculateVehicleTypeFactor(String vehicleType) {
 
-        switch (vehicleType){
-            case "Cabriolet":
+        String vehicleTypeToUpperCase = vehicleType.toUpperCase();
+        switch (vehicleTypeToUpperCase){
+            case "CABRIOLET":
                 return 1.3;
-            case "Coupe":
+            case "COUPE":
                 return 1.4;
-            case "Estate":
+            case "ESTATE":
                 return 1.5;
-            case "Hatchback":
+            case "HATCHBACK":
                 return 1.6;
-            case "Other":
+            case "OTHER":
                 return 1.7;
             default:
                 throw new IllegalArgumentException("Invalid vehicle type provided");

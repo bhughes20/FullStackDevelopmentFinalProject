@@ -4,7 +4,9 @@ public class EngineSizeFactor {
 
     public static double calculateEngineSizeFactor(String engineSize) {
 
-        switch(engineSize){
+        String engineSizeToUpperCase = engineSize.toUpperCase();
+
+        switch(engineSizeToUpperCase){
             case "1000":
                 return 1.0;
             case "1600":
@@ -15,7 +17,7 @@ public class EngineSizeFactor {
                 return 2.5;
             case "3000":
                 return 3.0;
-            case "Other":
+            case "OTHER":
                 return 3.5;
             default:
                 throw new IllegalArgumentException("Invalid engine size provided");

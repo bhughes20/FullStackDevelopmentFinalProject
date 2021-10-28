@@ -11,11 +11,14 @@ public class TestFactorsTest {
     String validVehicleType1, validVehicleType2, invalidVehicleType;
     String validEngineSize1, validEngineSize2, invalidEngineSize;
     int validAdditionalDrivers1, validAdditionalDrivers2, invalidAdditionalDrivers1, invalidAdditionalDrivers2;
+    String validCommercialUse1, validCommercialUse2, invalidCommercialUse;
+    String validOutsideStateUse1, validOutsideStateUse2, invalidOutsideStateUse;
+    double validVehicleValue1, validVehicleValue2, invalidVehicleValue;
 
     @BeforeEach
     void setUp() throws IllegalArgumentException {
 
-        validVehicleType1 = "Coupe";
+        validVehicleType1 = "COUPE";
         validVehicleType2 = "Hatchback";
         invalidVehicleType = "Not a vehicle";
 
@@ -28,6 +31,17 @@ public class TestFactorsTest {
         invalidAdditionalDrivers1 = 5;
         invalidAdditionalDrivers2 = -1;
 
+        validCommercialUse1 = "yEs";
+        validCommercialUse2 = "NO";
+        invalidCommercialUse = "N/A";
+
+        validOutsideStateUse1 = "yes";
+        validOutsideStateUse2 = "No";
+        invalidOutsideStateUse = "None";
+
+        validVehicleValue1 = 4999;
+        validVehicleValue2 = 5000.99;
+        invalidVehicleValue = 50000.01;
     }
 
     @AfterEach
@@ -104,6 +118,69 @@ public class TestFactorsTest {
                 () -> AdditionalDriversFactor.calculateAdditionalDriversFactor(invalidAdditionalDrivers2));
 
         String expectedMessage = "Additional drivers must be between 0 and 4 (inclusive)";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void whenValidCommercialUseOfYes_thenCorrectCommercialUseFactorShouldBeThrown(){
+        assertEquals(1.1, CommercialUseFactor.calculateCommercialUseFactor(validCommercialUse1));
+    }
+
+    @Test
+    public void whenValidCommercialUseOfNo_thenCorrectCommercialUseFactorShouldBeThrown(){
+        assertEquals(1.0, CommercialUseFactor.calculateCommercialUseFactor(validCommercialUse2));
+    }
+
+    @Test
+    public void whenInvalidCommercialUse_thenIllegalArgumentExceptionShouldBeThrown(){
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> CommercialUseFactor.calculateCommercialUseFactor(invalidCommercialUse));
+
+        String expectedMessage = "Commercial use must be \"yes\" or \"no\"";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void whenValidOutsideStateUseOfYes_thenCorrectOutsideStateUseFactorShouldBeThrown(){
+        assertEquals(1.1, OutsideStateUseFactor.calculateOutsideStateUseFactor(validOutsideStateUse1));
+    }
+
+    @Test
+    public void whenValidOutsideStateUseOfNo_thenCorrectOutsideStateUseFactorShouldBeThrown(){
+        assertEquals(1.0, OutsideStateUseFactor.calculateOutsideStateUseFactor(validOutsideStateUse2));
+    }
+
+    @Test
+    public void whenInvalidOutsideStateUse_thenIllegalArgumentExceptionShouldBeThrown(){
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> OutsideStateUseFactor.calculateOutsideStateUseFactor(invalidOutsideStateUse));
+
+        String expectedMessage = "Outside state use must be \"yes\" or \"no\"";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void whenValidVehicleValueOf4999_thenCorrectVehicleValueFactorShouldBeReturned(){
+        assertEquals(1.0, VehicleValueFactor.calculateVehicleValueFactor(validVehicleValue1));
+    }
+
+    @Test
+    public void whenValidVehicleValueOf5000And99c_thenCorrectVehicleValueFactorShouldBeReturned(){
+        assertEquals(1.2, VehicleValueFactor.calculateVehicleValueFactor(validVehicleValue2));
+    }
+
+    @Test
+    public void whenInvalidVehicleValue_thenIllegalArgumentExceptionShouldBeThrown(){
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> VehicleValueFactor.calculateVehicleValueFactor(invalidVehicleValue));
+
+        String expectedMessage = "Vehicle value must be between $0 and $50,000 (inclusive)";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));

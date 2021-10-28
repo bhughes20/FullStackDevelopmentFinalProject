@@ -3,7 +3,7 @@ INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
                     FIRST_NAME, LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX,
                     REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
 VALUES (1, 1, '221b', 'Baker Street', 'London', 'Yes',
-        '17432', '2000', 447.216, 'Sherlock', 'Holmes',
+        17432.84, '2000', 447.216, 'Sherlock', 'Holmes',
         'Yes', 'NW1 6XE', 'Dr', '2000-04-03',
         '01234567891', 'Coupe'
        );
@@ -13,7 +13,7 @@ INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
                     FIRST_NAME, LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX,
                     REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
 VALUES (2, 2, '742', 'Evergreen Terrace', 'Springfield', 'No',
-        '5500', '1600', 405.504, 'Marge', 'Simpson',
+        5500.50, '1600', 405.504, 'Marge', 'Simpson',
         'Yes', '89011', 'Mrs', '1987-12-17',
         '10987654321', 'Hatchback'
        );
@@ -23,7 +23,7 @@ INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
                     FIRST_NAME, LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX,
                     REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
 VALUES (3, 2, '15', 'Yemen Road', 'Yemen', 'No',
-        '8000', '3000', 617.76, 'Chandler', 'Bing',
+        8000.00, '3000', 617.76, 'Chandler', 'Bing',
         'Yes', '11111', 'Mr', '1998-02-26',
         '00000000001', 'Cabriolet'
        );
@@ -33,7 +33,7 @@ INSERT INTO driver (ID, ADDITIONAL_DRIVERS, ADDRESS_LINE1, ADDRESS_LINE2, CITY,
                     FIRST_NAME, LAST_NAME, OUT_OF_REGISTERED_STATE, POSTCODE_OR_ZIP, PREFIX,
                     REGISTRATION_DATE, TELEPHONE_NUMBER, VEHICLE_TYPE)
 VALUES (4, 1, '42', 'Wallaby Way', 'Sydney', 'Yes',
-        '25000', '2500', 598.95 , 'Philip', 'Sherman',
+        25000, '2500', 598.95 , 'Philip', 'Sherman',
         'Yes', 'SY12 3AU', 'Dr', '2003-10-10',
         '61412345678', 'Estate'
        );
