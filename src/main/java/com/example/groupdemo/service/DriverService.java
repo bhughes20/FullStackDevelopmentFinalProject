@@ -10,9 +10,11 @@ import java.util.List;
 public class DriverService {
 
     private final DriverRepository driverRepository;
+    private final QuoteAmountService quoteAmountService;
 
-    public DriverService(DriverRepository driverRepository) {
+    public DriverService(DriverRepository driverRepository, QuoteAmountService quoteAmountService) {
         this.driverRepository = driverRepository;
+        this.quoteAmountService = quoteAmountService;
     }
 
     public Driver getDriverById(Long id) throws Exception {
@@ -26,6 +28,7 @@ public class DriverService {
     }
 
     public Driver postDriver(Driver driver){
+        quoteAmountService.calculateQuoteAmount(driver);
         return driverRepository.save(driver);
     }
 

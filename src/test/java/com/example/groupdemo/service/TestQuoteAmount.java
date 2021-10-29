@@ -22,12 +22,12 @@ public class TestQuoteAmount {
 
         driver = new Driver();
 
-         test1VehicleType = "Hatchback";
-         test1EngineSize = "1600";
-         test1AdditionalDrivers = 3;
-         test1CommercialUse = "yes";
-         test1OutsideStateUse = "yes";
-         test1VehicleValue = 5000;
+        test1VehicleType = "Hatchback";
+        test1EngineSize = "1600";
+        test1AdditionalDrivers = 3;
+        test1CommercialUse = "yes";
+        test1OutsideStateUse = "yes";
+        test1VehicleValue = 5000;
 
         test2VehicleType = "Cabriolet";
         test2EngineSize = "3000";
@@ -35,7 +35,6 @@ public class TestQuoteAmount {
         test2CommercialUse = "NO";
         test2OutsideStateUse = "NO";
         test2VehicleValue = 15000;
-
     }
 
     @AfterEach

@@ -1,7 +1,9 @@
 package com.example.groupdemo.service;
 
 import com.example.groupdemo.model.Driver;
+import org.springframework.stereotype.Service;
 
+@Service
 public class QuoteAmountService {
 
     public void calculateQuoteAmount(Driver driver) {
