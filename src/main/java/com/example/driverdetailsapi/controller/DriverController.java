@@ -1,7 +1,7 @@
 package com.example.driverdetailsapi.controller;
 
 import com.example.driverdetailsapi.service.DriverService;
-import com.example.driverdetailsapi.model.DriverDetails;
+import com.example.driverdetailsapi.model.Driver;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,24 +17,24 @@ public class DriverController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers/{id}")
-    DriverDetails getDriverById(@PathVariable Long id) throws Exception {
+    Driver getDriverById(@PathVariable Long id) throws Exception {
         return service.getDriverById(id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers")
-    List<DriverDetails> getAllDrivers(){ return service.getAllDrivers(); }
+    List<Driver> getAllDrivers(){ return service.getAllDrivers(); }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/drivers")
-    DriverDetails postDriver(@RequestBody DriverDetails driverDetails){
-        return service.postDriver(driverDetails);
+    Driver postDriver(@RequestBody Driver driver){
+        return service.postDriver(driver);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/drivers/{id}")
-    DriverDetails updateDriverById(@RequestBody DriverDetails driverDetailsToUpdate, @PathVariable Long id){
-        return service.updateDriverById(driverDetailsToUpdate, id);
+    Driver updateDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id){
+        return service.updateDriverById(driverToUpdate, id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

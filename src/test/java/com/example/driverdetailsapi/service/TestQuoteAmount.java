@@ -1,6 +1,6 @@
 package com.example.driverdetailsapi.service;
 
-import com.example.driverdetailsapi.model.DriverDetails;
+import com.example.driverdetailsapi.model.Driver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,12 +15,12 @@ public class TestQuoteAmount {
     int test2AdditionalDrivers;
     double test1VehicleValue;
     double test2VehicleValue;
-    DriverDetails driverDetails;
+    Driver driver;
 
     @BeforeEach
     void setup(){
 
-        driverDetails = new DriverDetails();
+        driver = new Driver();
 
         test1VehicleType = "Hatchback";
         test1EngineSize = "1600";
@@ -46,30 +46,30 @@ public class TestQuoteAmount {
     public void whenTest1DriverIsPassedToCalculateQuoteAmount_thenAFinalQuoteAmountIsCalculatedAndSet(){
         QuoteAmountService quoteAmountService = new QuoteAmountService();
 
-        driverDetails.setVehicleBodyType(test1VehicleType);
-        driverDetails.setEngineSize(test1EngineSize);
-        driverDetails.setAdditionalDrivers(test1AdditionalDrivers);
-        driverDetails.setCommercialUse(test1CommercialUse);
-        driverDetails.setOutsideStateUse(test1OutsideStateUse);
-        driverDetails.setCurrentValue(test1VehicleValue);
+        driver.setVehicleBodyType(test1VehicleType);
+        driver.setEngineSize(test1EngineSize);
+        driver.setAdditionalDrivers(test1AdditionalDrivers);
+        driver.setCommercialUse(test1CommercialUse);
+        driver.setOutsideStateUse(test1OutsideStateUse);
+        driver.setCurrentValue(test1VehicleValue);
 
-        quoteAmountService.calculateQuoteAmount(driverDetails);
-        assertEquals(371.712, driverDetails.getFinalQuoteAmount(), 0.3);
+        quoteAmountService.calculateQuoteAmount(driver);
+        assertEquals(371.712, driver.getFinalQuoteAmount(), 0.3);
     }
 
     @Test
     public void whenTest2DriverIsPassedToCalculateQuoteAmount_thenAFinalQuoteAmountIsCalculatedAndSet(){
         QuoteAmountService quoteAmountService = new QuoteAmountService();
 
-        driverDetails.setVehicleBodyType(test2VehicleType);
-        driverDetails.setEngineSize(test2EngineSize);
-        driverDetails.setAdditionalDrivers(test2AdditionalDrivers);
-        driverDetails.setCommercialUse(test2CommercialUse);
-        driverDetails.setOutsideStateUse(test2OutsideStateUse);
-        driverDetails.setCurrentValue(test2VehicleValue);
+        driver.setVehicleBodyType(test2VehicleType);
+        driver.setEngineSize(test2EngineSize);
+        driver.setAdditionalDrivers(test2AdditionalDrivers);
+        driver.setCommercialUse(test2CommercialUse);
+        driver.setOutsideStateUse(test2OutsideStateUse);
+        driver.setCurrentValue(test2VehicleValue);
 
-        quoteAmountService.calculateQuoteAmount(driverDetails);
-        assertEquals(514.80, driverDetails.getFinalQuoteAmount(), 0.2);
+        quoteAmountService.calculateQuoteAmount(driver);
+        assertEquals(514.80, driver.getFinalQuoteAmount(), 0.2);
     }
 
 }

@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class DriverDetails {
+@Entity (name = "DRIVER_DETAILS")
+public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,10 @@ public class DriverDetails {
     private String dateRegistered;
     private double finalQuoteAmount;
 
-    public DriverDetails() {
+    public Driver() {
     }
 
-    public DriverDetails(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcode, String vehicleBodyType, String engineSize, int additionalDrivers, String commercialUse, String outsideStateUse, double currentValue, String dateRegistered, double finalQuoteAmount) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcode, String vehicleBodyType, String engineSize, int additionalDrivers, String commercialUse, String outsideStateUse, double currentValue, String dateRegistered, double finalQuoteAmount) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
