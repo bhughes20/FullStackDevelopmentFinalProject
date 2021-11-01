@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class DriverService {
@@ -18,10 +19,9 @@ public class DriverService {
         this.quoteAmountService = quoteAmountService;
     }
 
-    public Driver getDriverById(Long id) throws Exception {
-
+    public Driver getDriverById(Long id) throws NoSuchElementException {
         return driverRepository.findById(id)
-                .orElseThrow(() -> new Exception("Driver with id " + id + " not found."));
+                .orElseThrow(() -> new NoSuchElementException("Driver with id " + id + " not found."));
     }
 
     public List<Driver> getAllDrivers (){
@@ -57,7 +57,7 @@ public class DriverService {
                     driver.setVehicleBodyType(driverToUpdate.getVehicleBodyType());
                     return driverRepository.save(driver);
                 })
-                .orElseGet(() -> driverRepository.save(driverToUpdate));
+                .orElseThrow(() -> new NoSuchElementException("Driver with id " + id + " not found."));
     }
 
     public void deleteDriverById(Long id) {
