@@ -1,4 +1,4 @@
-package com.example.groupdemo.service;
+package com.example.driverdetailsapi.service;
 
 public class CommercialUseFactor {
     public static double calculateCommercialUseFactor(String commercialUse) {

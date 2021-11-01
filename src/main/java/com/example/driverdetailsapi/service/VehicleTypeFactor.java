@@ -1,4 +1,4 @@
-package com.example.groupdemo.service;
+package com.example.driverdetailsapi.service;
 
 public class VehicleTypeFactor {
 

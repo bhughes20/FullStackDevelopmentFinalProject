@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>group-demo</artifactId>
+    <artifactId>driver-details-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>group-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>driver-details-api</name>
+    <description>Driver Details API for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
     </properties>

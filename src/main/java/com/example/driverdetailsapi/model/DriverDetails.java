@@ -1,4 +1,4 @@
-package com.example.groupdemo.model;
+package com.example.driverdetailsapi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Driver {
+public class DriverDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,20 +18,20 @@ public class Driver {
     private String addressLine1;
     private String addressLine2;
     private String city;
-    private String postcodeOrZip;
-    private String vehicleType;
+    private String postcode;
+    private String vehicleBodyType;
     private String engineSize;
     private int additionalDrivers;
-    private String commercialPurposes;
-    private String outOfRegisteredState;
+    private String commercialUse;
+    private String outsideStateUse;
     private double currentValue;
-    private String registrationDate;
+    private String dateRegistered;
     private double finalQuoteAmount;
 
-    public Driver() {
+    public DriverDetails() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcodeOrZip, String vehicleType, String engineSize, int additionalDrivers, String commercialPurposes, String outOfRegisteredState, double currentValue, String registrationDate, double finalQuoteAmount) {
+    public DriverDetails(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcode, String vehicleBodyType, String engineSize, int additionalDrivers, String commercialUse, String outsideStateUse, double currentValue, String dateRegistered, double finalQuoteAmount) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -40,14 +40,14 @@ public class Driver {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
-        this.postcodeOrZip = postcodeOrZip;
-        this.vehicleType = vehicleType;
+        this.postcode = postcode;
+        this.vehicleBodyType = vehicleBodyType;
         this.engineSize = engineSize;
         this.additionalDrivers = additionalDrivers;
-        this.commercialPurposes = commercialPurposes;
-        this.outOfRegisteredState = outOfRegisteredState;
+        this.commercialUse = commercialUse;
+        this.outsideStateUse = outsideStateUse;
         this.currentValue = currentValue;
-        this.registrationDate = registrationDate;
+        this.dateRegistered = dateRegistered;
         this.finalQuoteAmount = finalQuoteAmount;
     }
 
@@ -115,20 +115,20 @@ public class Driver {
         this.city = city;
     }
 
-    public String getPostcodeOrZip() {
-        return postcodeOrZip;
+    public String getPostcode() {
+        return postcode;
     }
 
-    public void setPostcodeOrZip(String postcodeOrZip) {
-        this.postcodeOrZip = postcodeOrZip;
+    public void setPostcode(String postcodeOrZip) {
+        this.postcode = postcodeOrZip;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public String getVehicleBodyType() {
+        return vehicleBodyType;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setVehicleBodyType(String vehicleType) {
+        this.vehicleBodyType = vehicleType;
     }
 
     public String getEngineSize() {
@@ -147,20 +147,20 @@ public class Driver {
         this.additionalDrivers = additionalDrivers;
     }
 
-    public String getCommercialPurposes() {
-        return commercialPurposes;
+    public String getCommercialUse() {
+        return commercialUse;
     }
 
-    public void setCommercialPurposes(String commercialPurposes) {
-        this.commercialPurposes = commercialPurposes;
+    public void setCommercialUse(String commercialPurposes) {
+        this.commercialUse = commercialPurposes;
     }
 
-    public String getOutOfRegisteredState() {
-        return outOfRegisteredState;
+    public String getOutsideStateUse() {
+        return outsideStateUse;
     }
 
-    public void setOutOfRegisteredState(String outOfRegisteredState) {
-        this.outOfRegisteredState = outOfRegisteredState;
+    public void setOutsideStateUse(String outOfRegisteredState) {
+        this.outsideStateUse = outOfRegisteredState;
     }
 
     public double getCurrentValue() {
@@ -171,12 +171,12 @@ public class Driver {
         this.currentValue = currentValue;
     }
 
-    public String getRegistrationDate() {
-        return registrationDate;
+    public String getDateRegistered() {
+        return dateRegistered;
     }
 
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setDateRegistered(String registrationDate) {
+        this.dateRegistered = registrationDate;
     }
 
     public double getFinalQuoteAmount() {
