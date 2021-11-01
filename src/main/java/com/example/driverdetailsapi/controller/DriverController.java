@@ -56,10 +56,11 @@ public class DriverController {
     @DeleteMapping("/drivers/{id}")
     void deleteDriverById(@PathVariable Long id){
         try{
-            service.deleteDriverById(id);
+            service.getDriverById(id);
         } catch (NoSuchElementException noSuchElementException) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, noSuchElementException);
         }
+        service.deleteDriverById(id);
     }
 }
