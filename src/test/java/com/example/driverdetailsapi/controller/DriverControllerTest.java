@@ -1,10 +1,8 @@
 package com.example.driverdetailsapi.controller;
 
 import com.example.driverdetailsapi.model.Driver;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
 
@@ -98,6 +95,12 @@ class DriverControllerTest {
     }
 
     @Test
+    void givenDBInitialisedWith4Drivers_whenGetByIdFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
+        mockMvc.perform(get("/nonExistingEndpoint/" + existingId))
+                .andExpect(status().is(404));
+    }
+
+    @Test
     void givenDBInitialisedWith4Drivers_whenGetAllDrivers_thenShouldReturn4Drivers() throws Exception {
 
         final MvcResult mvcResult = mockMvc
@@ -119,6 +122,12 @@ class DriverControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
 
+    }
+
+    @Test
+    void givenDBInitialisedWith4Drivers_whenGetFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
+        mockMvc.perform(get("/nonExistingEndpoint"))
+                .andExpect(status().is(404));
     }
 
     @Test
@@ -175,6 +184,19 @@ class DriverControllerTest {
     }
 
     @Test
+    void givenDBInitialisedWith4Drivers_whenPostToNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
+
+        final String driverJSON = objectMapper.writeValueAsString(driver);
+
+        mockMvc.perform(post("/nonExistingEndpoint")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(driverJSON)
+                )
+                .andDo(print())
+                .andExpect(status().is(404));
+    }
+
+    @Test
     @DirtiesContext
     void givenDBInitialisedWith4Drivers_whenUpdateDriverTelephoneNumberByExistingId_thenShouldReturnUpdatedTelephoneNumber() throws Exception {
 
@@ -222,7 +244,6 @@ class DriverControllerTest {
     @DirtiesContext
     void givenDBInitialisedWith4Drivers_whenUpdateDriverTelephoneNumberByNonExistingId_thenShouldReturnNotFoundError() throws Exception {
 
-        String updatedTelephoneNumber = "12345678901";
         driver.setId(nonExistingId);
         driver.setTelephoneNumber(updatedTelephoneNumber);
 
@@ -240,6 +261,22 @@ class DriverControllerTest {
         String expectedErrorMessage = ID_NOT_FOUND_ERROR_MSG + nonExistingId;
 
         assertEquals(expectedErrorMessage, mvcResult.getResponse().getErrorMessage());
+    }
+
+    @Test
+    void givenDBInitialisedWith4Drivers_whenUpdateToNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
+
+        driver.setId(existingId);
+        driver.setTelephoneNumber(updatedTelephoneNumber);
+
+        final String driverJSON = objectMapper.writeValueAsString(driver);
+
+        mockMvc.perform(put("/nonExistingEndpoint" + existingId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(driverJSON)
+        )
+                .andDo(print())
+                .andExpect(status().is(404));
     }
 
     @Test
@@ -268,5 +305,15 @@ class DriverControllerTest {
         String expectedErrorMessage = ID_NOT_FOUND_ERROR_MSG + nonExistingId;
 
         assertEquals(expectedErrorMessage, mvcResult.getResponse().getErrorMessage());
+    }
+
+    @Test
+    void givenDBInitialisedWith4Drivers_whenDeleteFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
+
+        mockMvc.perform(delete("/nonExistingEndpoint/" + existingId)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andDo(print())
+                .andExpect(status().is(404));
     }
 }
