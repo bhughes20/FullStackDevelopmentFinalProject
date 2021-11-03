@@ -2,7 +2,6 @@ package com.example.driverdetailsapi.service;
 
 import com.example.driverdetailsapi.model.Driver;
 
-import java.text.ParseException;
 import java.util.List;
 
 public class DisplayDriverDetails {
