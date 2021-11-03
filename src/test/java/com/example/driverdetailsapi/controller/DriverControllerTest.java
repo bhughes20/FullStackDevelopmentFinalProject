@@ -13,6 +13,9 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.driverdetailsapi.controller.DriverController.ID_NOT_FOUND_ERROR_MSG;
@@ -31,15 +34,16 @@ class DriverControllerTest {
     private ObjectMapper objectMapper;
 
     String prefix, firstName, lastName, telephoneNumber, updatedTelephoneNumber, addressLine1, addressLine2, city, postcode,
-    vehicleBodyType, engineSize, commercialUse, outsideStateUse, dateRegistered;
+    vehicleBodyType, engineSize, commercialUse, outsideStateUse;
     int additionalDrivers;
     double currentValue, finalQuoteAmount;
+    Date dateRegistered;
     long existingId, nonExistingId;
 
     Driver driver;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws ParseException {
 
         existingId = 1L;
         nonExistingId = 15L;
@@ -59,7 +63,7 @@ class DriverControllerTest {
         commercialUse = "yes";
         outsideStateUse = "yes";
         currentValue = 45000.00;
-        dateRegistered = "23 December 1910";
+        dateRegistered =new SimpleDateFormat("dd/MM/yyyy").parse("23/12/1910");
         finalQuoteAmount = 0.00;
 
         driver = new Driver(null, prefix, firstName, lastName, telephoneNumber,

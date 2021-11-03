@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity (name = "DRIVER_DETAILS")
 public class Driver {
@@ -25,13 +27,13 @@ public class Driver {
     private String commercialUse;
     private String outsideStateUse;
     private double currentValue;
-    private String dateRegistered;
+    private Date dateRegistered;
     private double finalQuoteAmount;
 
     public Driver() {
     }
 
-    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcode, String vehicleBodyType, String engineSize, int additionalDrivers, String commercialUse, String outsideStateUse, double currentValue, String dateRegistered, double finalQuoteAmount) {
+    public Driver(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String postcode, String vehicleBodyType, String engineSize, int additionalDrivers, String commercialUse, String outsideStateUse, double currentValue, Date dateRegistered, double finalQuoteAmount) {
         this.id = id;
         this.prefix = prefix;
         this.firstName = firstName;
@@ -171,12 +173,12 @@ public class Driver {
         this.currentValue = currentValue;
     }
 
-    public String getDateRegistered() {
+    public Date getDateRegistered() {
         return dateRegistered;
     }
 
-    public void setDateRegistered(String registrationDate) {
-        this.dateRegistered = registrationDate;
+    public void setDateRegistered(Date dateRegistered) {
+        this.dateRegistered = dateRegistered;
     }
 
     public double getFinalQuoteAmount() {
@@ -185,5 +187,10 @@ public class Driver {
 
     public void setFinalQuoteAmount(double finalQuoteAmount) {
         this.finalQuoteAmount = finalQuoteAmount;
+    }
+
+    public String formatDateRegistered(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(dateRegistered);
     }
 }

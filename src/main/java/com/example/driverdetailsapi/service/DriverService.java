@@ -4,6 +4,7 @@ import com.example.driverdetailsapi.model.Driver;
 import com.example.driverdetailsapi.repository.DriverRepository;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -34,6 +35,7 @@ public class DriverService {
         driverList.add(driver);
         DisplayDriverDetails displayDriverDetails = new DisplayDriverDetails();
         displayDriverDetails.displayDriverDetails(driverList);
+
         return driverRepository.save(driver);
     }
 
