@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity (name = "DRIVER_DETAILS")
 public class Driver {
@@ -192,5 +194,12 @@ public class Driver {
     public String formatDateRegistered(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(dateRegistered);
+    }
+
+    public String formatCurrency(double value){
+        Locale locale = new Locale("en", "US");
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+        return formatter.format(value);
+
     }
 }
