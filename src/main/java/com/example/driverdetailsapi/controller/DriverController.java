@@ -28,7 +28,6 @@ public class DriverController {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, noSuchElementException);
         }
-
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

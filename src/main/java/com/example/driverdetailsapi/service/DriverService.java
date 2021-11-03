@@ -40,21 +40,7 @@ public class DriverService {
      public Driver updateDriverById(Driver driverToUpdate, Long id){
         return driverRepository.findById(id)
                 .map(driver -> {
-                    driver.setAdditionalDrivers(driverToUpdate.getAdditionalDrivers());
-                    driver.setAddressLine1(driverToUpdate.getAddressLine1());
-                    driver.setAddressLine2(driverToUpdate.getAddressLine2());
-                    driver.setCity(driverToUpdate.getCity());
-                    driver.setCommercialUse(driverToUpdate.getCommercialUse());
-                    driver.setCurrentValue(driverToUpdate.getCurrentValue());
-                    driver.setEngineSize(driverToUpdate.getEngineSize());
-                    driver.setFirstName(driverToUpdate.getFirstName());
-                    driver.setLastName(driverToUpdate.getLastName());
-                    driver.setOutsideStateUse(driverToUpdate.getOutsideStateUse());
-                    driver.setPostcode(driverToUpdate.getPostcode());
-                    driver.setPrefix(driverToUpdate.getPrefix());
-                    driver.setDateRegistered(driverToUpdate.getDateRegistered());
                     driver.setTelephoneNumber(driverToUpdate.getTelephoneNumber());
-                    driver.setVehicleBodyType(driverToUpdate.getVehicleBodyType());
                     return driverRepository.save(driver);
                 })
                 .orElseThrow(() -> new NoSuchElementException("Driver with id " + id + " not found."));
