@@ -33,9 +33,7 @@ public class DriverService {
         quoteAmountService.calculateQuoteAmount(driver);
         List<Driver> driverList = new ArrayList<>();
         driverList.add(driver);
-        DisplayDriverDetails displayDriverDetails = new DisplayDriverDetails();
-        displayDriverDetails.displayDriverDetails(driverList);
-
+        DisplayDriverDetails.displayDriverDetails(driverList);
         return driverRepository.save(driver);
     }
 
