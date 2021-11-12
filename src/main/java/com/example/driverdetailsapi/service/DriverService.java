@@ -13,6 +13,7 @@ public class DriverService {
 
     private final DriverRepository driverRepository;
     private final QuoteAmountService quoteAmountService;
+    List<Driver> driverList = new ArrayList<>();
 
     public DriverService(DriverRepository driverRepository, QuoteAmountService quoteAmountService) {
         this.driverRepository = driverRepository;
@@ -30,7 +31,6 @@ public class DriverService {
 
     public Driver postDriver(Driver driver){
         quoteAmountService.calculateQuoteAmount(driver);
-        List<Driver> driverList = new ArrayList<>();
         driverList.add(driver);
         DisplayDriverDetails.displayDriverDetails(driverList);
         return driverRepository.save(driver);

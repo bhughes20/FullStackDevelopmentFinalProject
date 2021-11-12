@@ -48,6 +48,5 @@ public class Driver {
         Locale locale = new Locale("en", "US");
         NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
         return formatter.format(value);
-
     }
 }
