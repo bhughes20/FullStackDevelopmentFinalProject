@@ -19,7 +19,6 @@ public class DriverController {
         this.service = service;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers/{id}")
     Driver getDriverById(@PathVariable Long id) {
         try{
@@ -30,17 +29,14 @@ public class DriverController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/drivers")
     List<Driver> getAllDrivers(){ return service.getAllDrivers(); }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/drivers")
     Driver postDriver(@RequestBody Driver driver){
         return service.postDriver(driver);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/drivers/{id}")
     Driver updateDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id){
         try{
@@ -51,7 +47,6 @@ public class DriverController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/drivers/{id}")
     void deleteDriverById(@PathVariable Long id){
         try{

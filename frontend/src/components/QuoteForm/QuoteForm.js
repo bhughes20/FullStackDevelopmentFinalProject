@@ -43,7 +43,7 @@ export default function QuoteForm() {
 
   const handleRegistration = (data) => {
     console.log(data);
-    const url = "http://localhost:8080/drivers";
+    const url = "/drivers";
     axios
       .post(url, data)
       .then((response) => {

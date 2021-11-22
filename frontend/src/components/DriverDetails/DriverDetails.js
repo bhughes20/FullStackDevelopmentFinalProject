@@ -16,7 +16,7 @@ export default function DriverDetails() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const url = `http://localhost:8080/drivers/${id}`;
+    const url = `/drivers/${id}`;
     axios
       .get(url)
       .then((response) => setData(response.data))
