@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useForm, Controller } from "react-hook-form";
 import { prefixOptions, vehicleBodyTypeOptions, engineSizeOptions } from "./SelectOptions";
 import DatePicker from "react-datepicker";
+import moment from 'moment';
 import {
   Container,
   Flex,
@@ -589,6 +590,9 @@ export default function QuoteForm() {
                       <DatePicker
                         dateFormat="dd/MM/yyyy"
                         selected={value}
+                        filterDate = {(date) => {
+                          return moment() > date;
+                        }}
                         onChange={onChange}
                         onBlur={onBlur}
                         placeholderText="Select date"
