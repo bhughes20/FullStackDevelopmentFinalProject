@@ -75,7 +75,7 @@ class DriverControllerTest {
     @Test
     void givenDBInitialisedWith4Drivers_whenGetDriverByExistingId_thenStatusShouldReturn200() throws Exception {
 
-        mockMvc.perform(get("/drivers/" + existingId))
+        mockMvc.perform(get("/api/drivers/" + existingId))
                 .andDo(print())
                 .andExpect(status().isOk());
 
@@ -85,7 +85,7 @@ class DriverControllerTest {
     void givenDBInitialisedWith4Drivers_whenGetDriverByNonExistingId_thenShouldReturnNotFoundError() throws Exception {
 
         final MvcResult mvcResult = mockMvc
-                .perform(get("/drivers/" + nonExistingId)
+                .perform(get("/api/drivers/" + nonExistingId)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andDo(print())
@@ -100,7 +100,7 @@ class DriverControllerTest {
 
     @Test
     void givenDBInitialisedWith4Drivers_whenGetByIdFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
-        mockMvc.perform(get("/nonExistingEndpoint/" + existingId))
+        mockMvc.perform(get("/api/nonExistingEndpoint/" + existingId))
                 .andExpect(status().is(404));
     }
 
@@ -108,7 +108,7 @@ class DriverControllerTest {
     void givenDBInitialisedWith4Drivers_whenGetAllDrivers_thenShouldReturn4Drivers() throws Exception {
 
         final MvcResult mvcResult = mockMvc
-                .perform(get("/drivers"))
+                .perform(get("/api/drivers"))
                 .andDo(print())
                 .andReturn();
 
@@ -122,7 +122,7 @@ class DriverControllerTest {
     @Test
     void givenDBInitialisedWith4Drivers_whenGetAllDrivers_thenStatusShouldReturn200() throws Exception {
 
-        mockMvc.perform(get("/drivers"))
+        mockMvc.perform(get("/api/drivers"))
                 .andDo(print())
                 .andExpect(status().isOk());
 
@@ -130,7 +130,7 @@ class DriverControllerTest {
 
     @Test
     void givenDBInitialisedWith4Drivers_whenGetFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
-        mockMvc.perform(get("/nonExistingEndpoint"))
+        mockMvc.perform(get("/api/nonExistingEndpoint"))
                 .andExpect(status().is(404));
     }
 
@@ -141,7 +141,7 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         final MvcResult mvcResult = mockMvc
-                .perform(post("/drivers")
+                .perform(post("/api/drivers")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -178,7 +178,7 @@ class DriverControllerTest {
 
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
-        mockMvc.perform(post("/drivers")
+        mockMvc.perform(post("/api/drivers")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -192,7 +192,7 @@ class DriverControllerTest {
 
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
-        mockMvc.perform(post("/nonExistingEndpoint")
+        mockMvc.perform(post("/api/nonExistingEndpoint")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -210,7 +210,7 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         final MvcResult mvcResult = mockMvc
-                .perform(put("/drivers/" + existingId)
+                .perform(put("/api/drivers/" + existingId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -236,7 +236,7 @@ class DriverControllerTest {
 
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
-        mockMvc.perform(put("/drivers/" + existingId)
+        mockMvc.perform(put("/api/drivers/" + existingId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -254,7 +254,7 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         final MvcResult mvcResult = mockMvc
-                .perform(put("/drivers/" + nonExistingId)
+                .perform(put("/api/drivers/" + nonExistingId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(driverJSON)
                 )
@@ -275,7 +275,7 @@ class DriverControllerTest {
 
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
-        mockMvc.perform(put("/nonExistingEndpoint" + existingId)
+        mockMvc.perform(put("/api/nonExistingEndpoint" + existingId)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(driverJSON)
         )
@@ -287,7 +287,7 @@ class DriverControllerTest {
     @DirtiesContext
     void givenDBInitialisedWith4Drivers_whenDeleteDriverByExistingId_thenStatusShouldReturn200() throws Exception {
 
-        mockMvc.perform(delete("/drivers/" + existingId)
+        mockMvc.perform(delete("/api/drivers/" + existingId)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andDo(print())
@@ -299,7 +299,7 @@ class DriverControllerTest {
     void givenDBInitialisedWith4Drivers_whenDeleteDriverByNonExistingId_thenShouldReturnNotFoundError() throws Exception {
 
         final MvcResult mvcResult = mockMvc
-                .perform(delete("/drivers/" + nonExistingId)
+                .perform(delete("/api/drivers/" + nonExistingId)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andDo(print())
@@ -314,7 +314,7 @@ class DriverControllerTest {
     @Test
     void givenDBInitialisedWith4Drivers_whenDeleteFromNonExistingEndpoint_thenStatusShouldReturn404() throws Exception {
 
-        mockMvc.perform(delete("/nonExistingEndpoint/" + existingId)
+        mockMvc.perform(delete("/api/nonExistingEndpoint/" + existingId)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andDo(print())
