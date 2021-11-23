@@ -44,7 +44,7 @@ export default function QuoteForm() {
 
   const handleRegistration = (data) => {
     console.log(data);
-    const url = "/drivers";
+    const url = "/api/drivers";
     axios
       .post(url, data)
       .then((response) => {

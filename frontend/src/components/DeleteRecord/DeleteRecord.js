@@ -38,7 +38,7 @@ export default function DeleteRecord() {
 
   const deleteRecord = () => {
     setIsOpen(false);
-    const url = `/drivers/${id}`;
+    const url = `/api/drivers/${id}`;
     axios
       .delete(url)
       .then((response) => {

@@ -93,7 +93,7 @@ export default function UpdateRecord() {
     console.log(data);
     const id = data.updateDriverId;
     const newTelephoneNumber = data.telephoneNumber;
-    const url = `/drivers/${id}`;
+    const url = `/api/drivers/${id}`;
 
     getDriverData(id, url, populateUpdateData, newTelephoneNumber);
   };

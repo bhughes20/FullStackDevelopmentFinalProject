@@ -35,7 +35,7 @@ export default function GetRecord() {
   };
 
   const checkDriverRecordExists = (id) => {
-    const url = `/drivers/${id}`;
+    const url = `/api/drivers/${id}`;
     const redirectEndpoint = `/driver-details/${id}`;
     axios
       .get(url)
