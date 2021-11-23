@@ -36,7 +36,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://capstone-project-capstone-project.allstatejenkins8.conygre.com",
   "browserslist": {
     "production": [
       ">0.2%",
