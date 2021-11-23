@@ -12,6 +12,7 @@
     "axios": "^0.21.4",
     "chakra-react-select": "^1.2.2",
     "framer-motion": "^4.1.17",
+    "http-proxy-middleware": "^2.0.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-datepicker": "^4.2.1",
@@ -36,7 +37,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://capstone-project-capstone-project.allstatejenkins8.conygre.com",
   "browserslist": {
     "production": [
       ">0.2%",
