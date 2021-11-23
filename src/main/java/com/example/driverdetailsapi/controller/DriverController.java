@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping("/api")
 public class DriverController {
 
     private final DriverService service;
