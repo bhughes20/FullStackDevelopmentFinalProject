@@ -1,5 +1,6 @@
-export const validationRequiredField = (fieldName) =>
-    `${fieldName} is a required field`;
+export const validationRequiredField = {
+    required: "This is a required field"
+};
 
 export const validationFirstName = {
     required: "First Name is a required field",
