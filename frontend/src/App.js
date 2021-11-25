@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer} from "react-toastify";
 import { ChakraProvider } from "@chakra-ui/react";
-import { HashRouter, Route } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import QuoteForm from "./components/QuoteForm/QuoteForm";
 import Admin from "./components/Admin/Admin";
@@ -26,18 +26,19 @@ function App() {
       />
       <HashRouter>
         <Navbar />
-        <Route exact path="/">
-          <QuoteForm />
-        </Route>
-        <Route exact path="/admin">
-          <Admin />
-        </Route>
-        <Route path="/driver-details/:id">
-          <DriverDetails />
-        </Route>
+        <Switch>
+            <Route exact path="/#" component={QuoteForm} />
+            <Route exact path="/admin" component={Admin} />
+            <Route path="/driver-details/:id" component={DriverDetails} />
+            <Route path="*" component={NotFound} />
+        </Switch>
       </HashRouter>
     </ChakraProvider>
   );
+}
+
+function NotFound() {
+    return <>You have landed on a page that doesn't exist</>;
 }
 
 export default App;
