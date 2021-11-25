@@ -30,7 +30,7 @@ function App() {
                     <Route exact path="/" component={QuoteForm}/>
                     <Route exact path="/admin" component={Admin}/>
                     <Route exact path="/driver-details/:id" component={DriverDetails}/>
-                    <Route component={NotFound}/>
+
                 </Switch>
             </HashRouter>
         </ChakraProvider>
