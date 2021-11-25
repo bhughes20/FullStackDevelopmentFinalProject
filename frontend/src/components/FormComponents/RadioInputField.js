@@ -1,22 +1,23 @@
 import React from "react";
 
-export const RadioInputField = (props) => {
+export const RadioInputField = (props, register) => {
 
     const radioInputField = props.radioInputField;
 
     return(
+
         <label
             className="radio-label"
             htmlFor={radioInputField.label}
         >
             <input
-                {radioInputField.rules}
+                register={register}
                 type={radioInputField.type}
                 value={radioInputField.value}
                 id={radioInputField.id}
             />
             <span className="checkmark"></span>
-            {radioInputField.value}
+            {radioInputField.content}
         </label>
     );
 }

@@ -56,7 +56,7 @@ export default function QuoteForm() {
     name: "prefix",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Prefix"),
+    rules: {validationRequiredField},
     isInvalid: {errorsPrefix},
     options: {prefixOptions},
     placeholder: "Select..."
@@ -97,7 +97,7 @@ export default function QuoteForm() {
     name: "addressLine1",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Address Line 1"),
+    rules: {validationRequiredField},
     type: "text",
     placeholder: "Please Enter Address Line 1 (Street)..."
   }
@@ -107,7 +107,7 @@ export default function QuoteForm() {
     name: "addressLine2",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Address Line 2"),
+    rules: {validationRequiredField},
     type: "text",
     placeholder: "Please Enter Address Line 2 (Road)..."
   }
@@ -117,7 +117,7 @@ export default function QuoteForm() {
     name: "city",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("City"),
+    rules: {validationRequiredField},
     type: "text",
     placeholder: "Please Enter City..."
   }
@@ -127,7 +127,7 @@ export default function QuoteForm() {
     name: "postcode",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Postcode / Zip"),
+    rules: {validationRequiredField},
     type: "text",
     placeholder: "Please Enter Postcode / Zip..."
   }
@@ -138,7 +138,7 @@ export default function QuoteForm() {
     name: "vehicleBodyType",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Vehicle Body Type"),
+    rules: {validationRequiredField},
     isInvalid: {errorsVehicleBodyType},
     options: {vehicleBodyTypeOptions},
     placeholder: "Select..."
@@ -150,7 +150,7 @@ export default function QuoteForm() {
     name: "engineSize",
     control: {control},
     defaultValue: "",
-    rules: validationRequiredField("Engine Size"),
+    rules: {validationRequiredField},
     isInvalid: {errorsEngineSize},
     options: {engineSizeOptions},
     placeholder: "Select..."
@@ -180,44 +180,48 @@ export default function QuoteForm() {
     clampValueOnBlur: false
   }
 
+  const registerCommercialUseYes = {
+    htmlFor: "commercialUse-yes",
+    register: {...register("commercialUse", {
+        required: "This is a required field",
+      })},
+    type:"radio",
+    value:"Yes",
+    content:"Yes",
+    id:"commercialUse-yes"
+  }
+
   const registerCommercialUseNo = {
     htmlFor: "commercialUse-no",
-    rules: {...register("commercialUse", {
+    register: {...register("commercialUse", {
         required: "This is a required field",
       })},
     type:"radio",
     value:"No",
+    content:"No",
     id:"commercialUse-no"
   }
 
   const registerOutsideStateUseYes = {
     htmlFor: "outsideStateUse-yes",
-    rules: {...register("outsideStateUse", {
+    register: {...register("outsideStateUse", {
         required: "This is a required field",
       })},
     type:"radio",
     value:"Yes",
+    content:"Yes",
     id:"outsideStateUse-yes"
   }
 
   const registerOutsideStateUseNo = {
     htmlFor: "outsideStateUse-no",
-    rules: {...register("outsideStateUse", {
+    register: {...register("outsideStateUse", {
         required: "This is a required field",
       })},
     type:"radio",
     value:"No",
+    content:"No",
     id:"outsideStateUse-no"
-  }
-
-  const registerCommercialUseYes = {
-    htmlFor: "commercialUse-yes",
-    rules: {...register("commercialUse", {
-        required: "This is a required field",
-      })},
-    type:"radio",
-    value:"Yes",
-    id:"commercialUse-yes"
   }
 
   const controllerDateRegistered = {
@@ -226,7 +230,7 @@ export default function QuoteForm() {
     name: "dateRegistered",
     control: {control},
     defaultValue: new Date(),
-    rules: validationRequiredField("Date Registered"),
+    rules: {validationRequiredField},
     dateFormat: "dd/MM/yyyy",
     filterDate: (date) => {
     return moment() > date;
@@ -245,7 +249,7 @@ export default function QuoteForm() {
           })
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         toast.error("Oops, something went wrong!")
       });
   };
