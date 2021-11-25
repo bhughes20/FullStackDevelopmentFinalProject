@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import QuoteForm from "./components/QuoteForm/QuoteForm";
 import Admin from "./components/Admin/Admin";
 import DriverDetails from "./components/DriverDetails/DriverDetails";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
     return (
@@ -30,7 +31,7 @@ function App() {
                     <Route exact path="/" component={QuoteForm}/>
                     <Route exact path="/admin" component={Admin}/>
                     <Route exact path="/driver-details/:id" component={DriverDetails}/>
-
+                    <Route component={NotFound}/>
                 </Switch>
             </HashRouter>
         </ChakraProvider>
@@ -39,6 +40,3 @@ function App() {
 
 export default App;
 
-function NotFound() {
-    return <>You have landed on a page that doesn't exist</>;
-}
