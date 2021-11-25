@@ -27,7 +27,6 @@ function App() {
             />
             <HashRouter>
                 <Navbar/>
-                <Switch>
                     <Route exact path="/">
                         <QuoteForm/>
                     </Route>
@@ -40,7 +39,6 @@ function App() {
                     <Route path="*">
                         <NotFound/>
                     </Route>
-                </Switch>
             </HashRouter>
         </ChakraProvider>
     );
