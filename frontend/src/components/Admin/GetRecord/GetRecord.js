@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
@@ -15,22 +15,33 @@ import {
   GridItem,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { validationDriverId } from "../../ValidationOptions";
+import { InputFieldController } from "../../FormComponents/InputFieldController";
 
 export default function GetRecord() {
-  let history = useHistory();
+  const history = useHistory();
   const colSpan = useBreakpointValue({ base: 3, md: 1 });
 
   const {
-    handleSubmit: handleSubmitGetDetails,
-    control: controlGetDetails,
-    formState: { errors: errorsGetDetails },
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm({
     mode: "onBlur",
   });
 
-  const handleRegistrationGetDetails = (data) => {
-    const id = data.getDetailsId;
-    console.log(data);
+  const controllerDriverId = {
+    id: "driverId",
+    name: "driverId",
+    control: {control},
+    defaultValue: "",
+    rules: {validationDriverId},
+    type: "text",
+    placeholder: "Please Enter Driver ID"
+  }
+
+  const handleRegistration = (data) => {
+    const id = data.driverId;
     checkDriverRecordExists(id);
   };
 
@@ -40,13 +51,11 @@ export default function GetRecord() {
     axios
       .get(url)
       .then((response) => {
-        console.log(response)
         if (response.status >= 200 && response.status < 300){
           history.push(redirectEndpoint);
         }
       })
       .catch((error) => {
-        console.log(JSON.stringify(error));
         if(error.response.status === 404){
           toast.error(`Sorry, Driver ID ${id} does not exist.`)
         } else {
@@ -55,17 +64,12 @@ export default function GetRecord() {
       });
   };
 
-  const handleErrorGetDetails = (errors) => {
+  const handleError = (errors) => {
     console.log(errors);
   };
 
   return (
-    <form
-      onSubmit={handleSubmitGetDetails(
-        handleRegistrationGetDetails,
-        handleErrorGetDetails
-      )}
-    >
+    <form onSubmit={handleSubmit(handleRegistration, handleError)}>
       <SimpleGrid
         padding={[5, 10]}
         bgColor="grey.300"
@@ -81,32 +85,12 @@ export default function GetRecord() {
           </Heading>
         </GridItem>
         <GridItem colSpan={colSpan}>
-          <FormControl isRequired isInvalid={errorsGetDetails.getDetailsId}>
-            <FormLabel htmlFor="getDetailsId">Driver ID</FormLabel>
-            <Controller
-              id="getDetailsId"
-              name="getDetailsId"
-              control={controlGetDetails}
-              defaultValue=""
-              rules={{
-                required: "Driver ID is a required field",
-                pattern: {
-                  value: /^[0-9]/i,
-                  message: "ID must be numeric digits",
-                },
-              }}
-              render={({ field: { value, onChange, onBlur } }) => (
-                <Input
-                  value={value}
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  placeholder="Please Enter Driver ID"
-                />
-              )}
-            />
+          <FormControl isRequired isInvalid={errors}>
+            <FormLabel htmlFor="driverId">Driver ID</FormLabel>
+            <InputFieldController inputFieldController={ controllerDriverId }/>
             <FormErrorMessage>
-              {errorsGetDetails.getDetailsId &&
-                errorsGetDetails.getDetailsId.message}
+              {errors &&
+                errors.message}
             </FormErrorMessage>
           </FormControl>
         </GridItem>

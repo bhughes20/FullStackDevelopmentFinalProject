@@ -20,6 +20,8 @@ import {
   GridItem,
   useBreakpointValue
 } from "@chakra-ui/react";
+import { validationDriverId } from "../../ValidationOptions";
+import { InputFieldController } from "../../FormComponents/InputFieldController";
 
 export default function DeleteRecord() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,12 +31,22 @@ export default function DeleteRecord() {
   const colSpan = useBreakpointValue({ base: 3, md: 1 });
 
   const {
-    handleSubmit: handleSubmitDeleteRecord,
-    control: controlDeleteRecord,
-    formState: { errors: errorsDeleteRecord },
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm({
     mode: "onBlur",
   });
+
+  const controllerDriverId = {
+    id: "driverId",
+    name: "driverId",
+    control: {control},
+    defaultValue: "",
+    rules: {validationDriverId},
+    type: "text",
+    placeholder: "Please Enter Driver ID"
+  }
 
   const deleteRecord = () => {
     setIsOpen(false);
@@ -42,13 +54,11 @@ export default function DeleteRecord() {
     axios
       .delete(url)
       .then((response) => {
-        console.log(response)
         if (response.status >= 200 && response.status < 300){
           toast.success(`Driver ID ${id} has been deleted.`)
         }
       })
       .catch((error) => {
-        console.log(JSON.stringify(error));
         if(error.response.status === 404){
           toast.error(`Sorry, Driver ID ${id} does not exist.`)
         } else {
@@ -57,12 +67,12 @@ export default function DeleteRecord() {
       });
   };
 
-  const handleRegistrationDeleteRecord = (data) => {
-    setId(data.deleteDriverId);
+  const handleRegistration = (data) => {
+    setId(data.driverId);
     setIsOpen(true);
   };
 
-  const handleErrorDeleteRecord = (errors) => {
+  const handleError = (errors) => {
     console.log(errors);
   };
 
@@ -102,12 +112,7 @@ export default function DeleteRecord() {
         </AlertDialogOverlay>
       </AlertDialog>
 
-      <form
-        onSubmit={handleSubmitDeleteRecord(
-          handleRegistrationDeleteRecord,
-          handleErrorDeleteRecord
-        )}
-      >
+      <form onSubmit={handleSubmit(handleRegistration, handleError)}>
         <SimpleGrid
           padding={[5, 10]}
           bgColor="grey.300"
@@ -125,33 +130,13 @@ export default function DeleteRecord() {
           <GridItem colSpan={colSpan}>
             <FormControl
               isRequired
-              isInvalid={errorsDeleteRecord.deleteDriverId}
+              isInvalid={errors}
             >
-              <FormLabel htmlFor="deleteDriverId">Driver ID</FormLabel>
-              <Controller
-                id="deleteDriverId"
-                name="deleteDriverId"
-                control={controlDeleteRecord}
-                defaultValue=""
-                rules={{
-                  required: "Driver ID is a required field",
-                  pattern: {
-                    value: /^[0-9]/i,
-                    message: "ID must be numeric digits",
-                  },
-                }}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <Input
-                    value={value}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    placeholder="Please Enter Driver ID"
-                  />
-                )}
-              />
+              <FormLabel htmlFor="driverId">Driver ID</FormLabel>
+              <InputFieldController inputFieldController={ controllerDriverId }/>
               <FormErrorMessage>
-                {errorsDeleteRecord.deleteDriverId &&
-                  errorsDeleteRecord.deleteDriverId.message}
+                {errors &&
+                  errors.message}
               </FormErrorMessage>
             </FormControl>
           </GridItem>

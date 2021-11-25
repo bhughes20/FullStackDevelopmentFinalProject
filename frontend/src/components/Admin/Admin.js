@@ -5,9 +5,9 @@ import {
   VStack,
   Heading,
 } from "@chakra-ui/react";
-import DeleteRecord from "../DeleteRecord/DeleteRecord";
-import UpdateRecord from "../UpdateRecord/UpdateRecord";
-import GetRecord from "../GetRecord/GetRecord";
+import DeleteRecord from "./DeleteRecord/DeleteRecord";
+import UpdateRecord from "./UpdateRecord/UpdateRecord";
+import GetRecord from "./GetRecord/GetRecord";
 
 export default function Admin() {
 

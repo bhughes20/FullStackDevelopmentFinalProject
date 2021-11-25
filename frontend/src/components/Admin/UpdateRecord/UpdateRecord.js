@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
@@ -15,19 +15,41 @@ import {
   GridItem,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import {validationDriverId, validationTelephoneNumber} from "../../ValidationOptions";
+import {InputFieldController} from "../../FormComponents/InputFieldController";
 
 export default function UpdateRecord() {
 
   const colSpan = useBreakpointValue({ base: 3, md: 1 });
-  let history = useHistory();
+  const history = useHistory();
 
   const {
-    handleSubmit: handleSubmitUpdateDriverTel,
-    control: controlUpdateDriverTel,
-    formState: { errors: errorsUpdateDriverTel },
+    handleSubmit,
+    control,
+    formState: { errors },
   } = useForm({
     mode: "onBlur",
   });
+
+  const controllerDriverId = {
+    id: "driverId",
+    name: "driverId",
+    control: {control},
+    defaultValue: "",
+    rules: {validationDriverId},
+    type: "text",
+    placeholder: "Please Enter Driver ID"
+  }
+
+  const controllerTelephoneNumber = {
+    id: "telephoneNumber",
+    name: "telephoneNumber",
+    control: {control},
+    defaultValue: "",
+    rules: {validationTelephoneNumber},
+    type: "tel",
+    placeholder: "Please Enter Tel..."
+  }
 
   const populateUpdateData = (data, newTelephoneNumber) => {
     const updateData = {
@@ -76,11 +98,9 @@ export default function UpdateRecord() {
       .get(url)
       .then(function (response) {
         const updateData = populateUpdateData(response.data, newTelephoneNumber);
-        console.log(updateData);
         updateDriverData(url, updateData);
       })
       .catch((error) => {
-        console.log(JSON.stringify(error));
         if(error.response.status === 404){
           toast.error(`Sorry, Driver ID ${id} does not exist.`)
         } else {
@@ -89,26 +109,20 @@ export default function UpdateRecord() {
       });
   }
 
-  const handleRegistrationUpdateDriverTel = (data) => {
-    console.log(data);
-    const id = data.updateDriverId;
+  const handleRegistration = (data) => {
+    const id = data.driverId;
     const newTelephoneNumber = data.telephoneNumber;
     const url = `/api/drivers/${id}`;
 
     getDriverData(id, url, populateUpdateData, newTelephoneNumber);
   };
 
-  const handleErrorUpdateDriverTel = (errors) => {
+  const handleError = (errors) => {
     console.log(errors);
   };
 
   return (
-    <form
-            onSubmit={handleSubmitUpdateDriverTel(
-              handleRegistrationUpdateDriverTel,
-              handleErrorUpdateDriverTel
-            )}
-          >
+      <form onSubmit={handleSubmit(handleRegistration, handleError)}>
             <SimpleGrid
               padding={[5, 10]}
               bgColor="grey.300"
@@ -126,77 +140,28 @@ export default function UpdateRecord() {
               <GridItem colSpan={colSpan}>
                 <FormControl
                   isRequired
-                  isInvalid={errorsUpdateDriverTel.updateDriverId}
+                  isInvalid={errors.driverId}
                 >
                   <FormLabel htmlFor="updateDriverId">Driver ID</FormLabel>
-                  <Controller
-                    id="updateDriverId"
-                    name="updateDriverId"
-                    control={controlUpdateDriverTel}
-                    defaultValue=""
-                    rules={{
-                      required: "Driver ID is a required field",
-                      pattern: {
-                        value: /^[0-9]/i,
-                        message: "ID must be numeric digits",
-                      },
-                    }}
-                    render={({ field: { value, onChange, onBlur } }) => (
-                      <Input
-                        value={value}
-                        onChange={onChange}
-                        onBlur={onBlur}
-                        placeholder="Please Enter Driver ID"
-                      />
-                    )}
-                  />
+                  <InputFieldController inputFieldController={ controllerDriverId }/>
                   <FormErrorMessage>
-                    {errorsUpdateDriverTel.updateDriverId &&
-                      errorsUpdateDriverTel.updateDriverId.message}
+                    {errors.driverId &&
+                    errors.driverId.message}
                   </FormErrorMessage>
                 </FormControl>
               </GridItem>
               <GridItem colSpan={colSpan}>
                 <FormControl
                   isRequired
-                  isInvalid={errorsUpdateDriverTel.telephoneNumber}
+                  isInvalid={errors.telephoneNumber}
                 >
                   <FormLabel htmlFor="telephoneNumber">
                     New Telephone Number
                   </FormLabel>
-                  <Controller
-                    id="telephoneNumber"
-                    name="telephoneNumber"
-                    rules={{
-                      required: "Telephone Number is a required field",
-                      maxLength: {
-                        value: 11,
-                        message: "Telephone Number must be 11 digits",
-                      },
-                      minLength: {
-                        value: 11,
-                        message: "Telephone Number must be 11 digits",
-                      },
-                      pattern: {
-                        value: /^[0-9]/i,
-                        message: "Telephone Number must be numeric digits",
-                      },
-                    }}
-                    control={controlUpdateDriverTel}
-                    defaultValue=""
-                    render={({ field: { value, onChange, onBlur } }) => (
-                      <Input
-                        type="tel"
-                        placeholder="Please Enter Tel..."
-                        value={value}
-                        onChange={onChange}
-                        onBlur={onBlur}
-                      />
-                    )}
-                  />
+                  <InputFieldController inputFieldController={ controllerTelephoneNumber}/>
                   <FormErrorMessage>
-                    {errorsUpdateDriverTel.telephoneNumber &&
-                      errorsUpdateDriverTel.telephoneNumber.message}
+                    {errors.telephoneNumber &&
+                      errors.telephoneNumber.message}
                   </FormErrorMessage>
                 </FormControl>
               </GridItem>
