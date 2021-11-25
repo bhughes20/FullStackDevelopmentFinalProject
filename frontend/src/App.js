@@ -28,10 +28,18 @@ function App() {
             <HashRouter>
                 <Navbar/>
                 <Switch>
-                    <Route exact path="/" component={QuoteForm}/>
-                    <Route exact path="/admin" component={Admin}/>
-                    <Route exact path="/driver-details/:id" component={DriverDetails}/>
-                    <Route component={NotFound}/>
+                    <Route exact path="/">
+                        <QuoteForm/>
+                    </Route>
+                    <Route exact path="/admin">
+                        <Admin/>
+                    </Route>
+                    <Route exact path="/driver-details/:id">
+                        <DriverDetails/>
+                    </Route>
+                    <Route path="*">
+                        <NotFound/>
+                    </Route>
                 </Switch>
             </HashRouter>
         </ChakraProvider>
