@@ -2,24 +2,31 @@ import React from "react";
 import {Controller} from "react-hook-form";
 import {Input} from "@chakra-ui/react";
 
-export const InputFieldController = (props) => {
-
-    const inputFieldController = props.inputFieldController;
+export const InputFieldController = (
+    {
+        id,
+        name,
+        control,
+        defaultValue,
+        rules,
+        placeholder,
+        type
+    }) => {
 
     return(
         <Controller
-            id={inputFieldController.id}
-            name={inputFieldController.name}
-            control={inputFieldController.control}
-            defaultValue={inputFieldController.defaultValue}
-            rules={inputFieldController.rules}
+            id={id}
+            name={name}
+            control={control}
+            defaultValue={defaultValue}
+            rules={rules}
             render={({ field: { value, onChange, onBlur } }) => (
                 <Input
-                    type={inputFieldController.type}
+                    type={type}
                     value={value}
                     onChange={onChange}
                     onBlur={onBlur}
-                    placeholder={inputFieldController.placeholder}
+                    placeholder={placeholder}
                 />
             )}
         />

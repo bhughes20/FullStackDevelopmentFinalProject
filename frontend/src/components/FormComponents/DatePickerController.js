@@ -2,23 +2,31 @@ import React from "react";
 import {Controller} from "react-hook-form";
 import DatePicker from "react-datepicker";
 
-export const DatePickerController = (props) => {
-
-    const datePickerController = props.datePickerController;
+export const DatePickerController  = (
+    {
+        className,
+        id,
+        name,
+        control,
+        defaultValue,
+        rules,
+        dateFormat,
+        filterDate
+    }) => {
 
     return(
         <Controller
-            className={datePickerController.className}
-            id={datePickerController.id}
-            name={datePickerController.name}
-            control={datePickerController.control}
-            rules={datePickerController.rules}
-            defaultValue={datePickerController.defaultValue}
+            className={className}
+            id={id}
+            name={name}
+            control={control}
+            rules={rules}
+            defaultValue={defaultValue}
             render={({ field: { onChange, onBlur, value } }) => (
                 <DatePicker
-                    dateFormat={datePickerController.dateFormat}
+                    dateFormat={dateFormat}
                     selected={value}
-                    filterDate = {datePickerController.filterDate}
+                    filterDate = {filterDate}
                     onChange={onChange}
                     onBlur={onBlur}
                 />

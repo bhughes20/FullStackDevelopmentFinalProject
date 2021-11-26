@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
@@ -14,7 +14,6 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Input,
   Button,
   SimpleGrid,
   GridItem,
@@ -37,16 +36,6 @@ export default function DeleteRecord() {
   } = useForm({
     mode: "onBlur",
   });
-
-  const controllerDriverId = {
-    id: "driverId",
-    name: "driverId",
-    control: {control},
-    defaultValue: "",
-    rules: {validationDriverId},
-    type: "text",
-    placeholder: "Please Enter Driver ID"
-  }
 
   const deleteRecord = () => {
     setIsOpen(false);
@@ -130,13 +119,21 @@ export default function DeleteRecord() {
           <GridItem colSpan={colSpan}>
             <FormControl
               isRequired
-              isInvalid={errors}
+              isInvalid={errors.driverId}
             >
               <FormLabel htmlFor="driverId">Driver ID</FormLabel>
-              <InputFieldController inputFieldController={ controllerDriverId }/>
+              <InputFieldController
+                  id={"driverId"}
+                  name={"driverId"}
+                  control={control}
+                  defaultValue={""}
+                  rules={validationDriverId}
+                  type={"text"}
+                  placeholder={"Please Enter Driver ID"}
+              />
               <FormErrorMessage>
-                {errors &&
-                  errors.message}
+                {errors.driverId &&
+                errors.driverId.message}
               </FormErrorMessage>
             </FormControl>
           </GridItem>

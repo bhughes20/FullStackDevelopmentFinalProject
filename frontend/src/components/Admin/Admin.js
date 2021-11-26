@@ -6,8 +6,9 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import DeleteRecord from "./DeleteRecord/DeleteRecord";
-import UpdateRecord from "./UpdateRecord/UpdateRecord";
 import GetRecord from "./GetRecord/GetRecord";
+import UpdateRecord from "./UpdateRecord/UpdateRecord";
+
 
 export default function Admin() {
 

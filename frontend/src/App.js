@@ -9,40 +9,37 @@ import Navbar from "./components/Navbar/Navbar";
 import QuoteForm from "./components/QuoteForm/QuoteForm";
 import Admin from "./components/Admin/Admin";
 import DriverDetails from "./components/DriverDetails/DriverDetails";
-import NotFound from "./components/NotFound/NotFound";
 
 function App() {
-    return (
-        <ChakraProvider theme={theme}>
-            <ToastContainer
-                position="top-center"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-            <HashRouter>
-                <Navbar/>
-                    <Route exact path="/">
-                        <QuoteForm/>
-                    </Route>
-                    <Route exact path="/admin">
-                        <Admin/>
-                    </Route>
-                    <Route exact path="/driver-details/:id">
-                        <DriverDetails/>
-                    </Route>
-                    <Route path="*">
-                        <NotFound/>
-                    </Route>
-            </HashRouter>
-        </ChakraProvider>
-    );
+  return (
+    <ChakraProvider theme={theme}>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <HashRouter>
+        <Navbar />
+        <Switch>
+            <Route exact path="/">
+                <QuoteForm />
+            </Route>
+            <Route exact path="/admin">
+                <Admin />
+            </Route>
+            <Route path="/driver-details/:id">
+                <DriverDetails />
+            </Route>
+        </Switch>
+      </HashRouter>
+    </ChakraProvider>
+  );
 }
 
 export default App;
-
