@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -9,7 +9,6 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Input,
   Button,
   SimpleGrid,
   GridItem,
@@ -30,26 +29,6 @@ export default function UpdateRecord() {
   } = useForm({
     mode: "onBlur",
   });
-
-  const controllerDriverId = {
-    id: "driverId",
-    name: "driverId",
-    control: {control},
-    defaultValue: "",
-    rules: {validationDriverId},
-    type: "text",
-    placeholder: "Please Enter Driver ID"
-  }
-
-  const controllerTelephoneNumber = {
-    id: "telephoneNumber",
-    name: "telephoneNumber",
-    control: {control},
-    defaultValue: "",
-    rules: {validationTelephoneNumber},
-    type: "tel",
-    placeholder: "Please Enter Tel..."
-  }
 
   const populateUpdateData = (data, newTelephoneNumber) => {
     const updateData = {
@@ -143,7 +122,15 @@ export default function UpdateRecord() {
                   isInvalid={errors.driverId}
                 >
                   <FormLabel htmlFor="updateDriverId">Driver ID</FormLabel>
-                  <InputFieldController inputFieldController={ controllerDriverId }/>
+                  <InputFieldController
+                      id={"driverId"}
+                      name={"driverId"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationDriverId}
+                      type={"text"}
+                      placeholder={"Please Enter Driver ID"}
+                  />
                   <FormErrorMessage>
                     {errors.driverId &&
                     errors.driverId.message}
@@ -158,7 +145,15 @@ export default function UpdateRecord() {
                   <FormLabel htmlFor="telephoneNumber">
                     New Telephone Number
                   </FormLabel>
-                  <InputFieldController inputFieldController={ controllerTelephoneNumber}/>
+                  <InputFieldController
+                      id={"telephoneNumber"}
+                      name={"telephoneNumber"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationTelephoneNumber}
+                      type={"tel"}
+                      placeholder={"Please Enter Tel..."}
+                  />
                   <FormErrorMessage>
                     {errors.telephoneNumber &&
                       errors.telephoneNumber.message}

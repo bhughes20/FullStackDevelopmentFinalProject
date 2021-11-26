@@ -20,7 +20,8 @@ import {
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import {
-  validationAdditionalDrivers, validationCurrentValue,
+  validationAdditionalDrivers,
+  validationCurrentValue,
   validationFirstName,
   validationLastName,
   validationRequiredField,
@@ -45,197 +46,6 @@ export default function QuoteForm() {
   const colSpan1 = useBreakpointValue({ base: 6, md: 2 });
   const colSpan2 = useBreakpointValue({ base: 6, md: 3 });
   const history = useHistory();
-
-  const errorsPrefix = errors.prefix;
-  const errorsVehicleBodyType = errors.vehicleBodyType;
-  const errorsEngineSize = errors.engineSize;
-
-  const controllerPrefix = {
-    className: "select",
-    id: "prefix",
-    name: "prefix",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    isInvalid: {errorsPrefix},
-    options: {prefixOptions},
-    placeholder: "Select..."
-  }
-
-  const controllerFirstName = {
-    id: "firstName",
-    name: "firstName",
-    control: {control},
-    defaultValue: "",
-    rules: {validationFirstName},
-    type: "text",
-    placeholder: "Please Enter First Name"
-  }
-
-  const controllerLastName = {
-    id: "lastName",
-    name: "lastName",
-    control: {control},
-    defaultValue: "",
-    rules: {validationLastName},
-    type: "text",
-    placeholder: "Please Enter Last Name"
-  }
-
-  const controllerTelephoneNumber = {
-    id: "telephoneNumber",
-    name: "telephoneNumber",
-    control: {control},
-    defaultValue: "",
-    rules: {validationTelephoneNumber},
-    type: "tel",
-    placeholder: "Please Enter Tel..."
-  }
-
-  const controllerAddressLine1 = {
-    id: "addressLine1",
-    name: "addressLine1",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    type: "text",
-    placeholder: "Please Enter Address Line 1 (Street)..."
-  }
-
-  const controllerAddressLine2 = {
-    id: "addressLine2",
-    name: "addressLine2",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    type: "text",
-    placeholder: "Please Enter Address Line 2 (Road)..."
-  }
-
-  const controllerCity = {
-    id: "city",
-    name: "city",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    type: "text",
-    placeholder: "Please Enter City..."
-  }
-
-  const controllerPostcode = {
-    id: "postcode",
-    name: "postcode",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    type: "text",
-    placeholder: "Please Enter Postcode / Zip..."
-  }
-
-  const controllerVehicleBodyType = {
-    className: "select",
-    id: "vehicleBodyType",
-    name: "vehicleBodyType",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    isInvalid: {errorsVehicleBodyType},
-    options: {vehicleBodyTypeOptions},
-    placeholder: "Select..."
-  }
-
-  const controllerEngineSize = {
-    className: "select",
-    id: "engineSize",
-    name: "engineSize",
-    control: {control},
-    defaultValue: "",
-    rules: {validationRequiredField},
-    isInvalid: {errorsEngineSize},
-    options: {engineSizeOptions},
-    placeholder: "Select..."
-  }
-
-  const controllerAdditionalDrivers = {
-    id: "additionalDrivers",
-    name: "additionalDrivers",
-    control: {control},
-    defaultValue: 1,
-    rules: {validationAdditionalDrivers},
-    minValue: 0,
-    maxValue: 4,
-    precision: 0,
-    clampValueOnBlur: false
-  }
-
-  const controllerCurrentValue = {
-    id: "currentValue",
-    name: "currentValue",
-    control: {control},
-    defaultValue: 0,
-    rules: {validationCurrentValue},
-    minValue: 0,
-    maxValue: 50000,
-    precision: 2,
-    clampValueOnBlur: false
-  }
-
-  const registerCommercialUseYes = {
-    htmlFor: "commercialUse-yes",
-    register: {...register("commercialUse", {
-        required: "This is a required field",
-      })},
-    type:"radio",
-    value:"Yes",
-    content:"Yes",
-    id:"commercialUse-yes"
-  }
-
-  const registerCommercialUseNo = {
-    htmlFor: "commercialUse-no",
-    register: {...register("commercialUse", {
-        required: "This is a required field",
-      })},
-    type:"radio",
-    value:"No",
-    content:"No",
-    id:"commercialUse-no"
-  }
-
-  const registerOutsideStateUseYes = {
-    htmlFor: "outsideStateUse-yes",
-    register: {...register("outsideStateUse", {
-        required: "This is a required field",
-      })},
-    type:"radio",
-    value:"Yes",
-    content:"Yes",
-    id:"outsideStateUse-yes"
-  }
-
-  const registerOutsideStateUseNo = {
-    htmlFor: "outsideStateUse-no",
-    register: {...register("outsideStateUse", {
-        required: "This is a required field",
-      })},
-    type:"radio",
-    value:"No",
-    content:"No",
-    id:"outsideStateUse-no"
-  }
-
-  const controllerDateRegistered = {
-    className: "react-datapicker__input-text",
-    id: "dateRegistered",
-    name: "dateRegistered",
-    control: {control},
-    defaultValue: new Date(),
-    rules: {validationRequiredField},
-    dateFormat: "dd/MM/yyyy",
-    filterDate: (date) => {
-    return moment() > date;
-    }
-  }
 
   const handleRegistration = (data) => {
     const url = "/api/drivers";
@@ -284,7 +94,17 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan1}>
                 <FormControl isRequired isInvalid={errors.prefix}>
                   <FormLabel htmlFor="prefix">Prefix</FormLabel>
-                  <SelectController selectController={ controllerPrefix }/>
+                  <SelectController
+                      className={"select"}
+                      id={"prefix"}
+                      name={"prefix"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      isInvalid={errors.prefix}
+                      options={prefixOptions}
+                      placeholder={"Select..."}
+                  />
                   <FormErrorMessage>
                     {errors.prefix && errors.prefix.message}
                   </FormErrorMessage>
@@ -293,7 +113,15 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan1}>
                 <FormControl isRequired isInvalid={errors.firstName}>
                   <FormLabel htmlFor="firstName">First Name</FormLabel>
-                  <InputFieldController inputFieldController={ controllerFirstName }/>
+                  <InputFieldController
+                      id={"firstName"}
+                      name={"firstName"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationFirstName}
+                      type={"text"}
+                      placeholder={"Please Enter First Name"}
+                  />
                   <FormErrorMessage>
                     {errors.firstName && errors.firstName.message}
                   </FormErrorMessage>
@@ -302,7 +130,15 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan1}>
                 <FormControl isRequired isInvalid={errors.lastName}>
                   <FormLabel htmlFor="lastName">Last Name</FormLabel>
-                  <InputFieldController inputFieldController={ controllerLastName }/>
+                  <InputFieldController
+                      id={"lastName"}
+                      name={"lastName"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationLastName}
+                      type={"text"}
+                      placeholder={"Please Enter Last Name"}
+                  />
                   <FormErrorMessage>
                     {errors.lastName && errors.lastName.message}
                   </FormErrorMessage>
@@ -314,7 +150,15 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="telephoneNumber">
                     Telephone Number
                   </FormLabel>
-                  <InputFieldController inputFieldController={ controllerTelephoneNumber}/>
+                  <InputFieldController
+                      id={"telephoneNumber"}
+                      name={"telephoneNumber"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationTelephoneNumber}
+                      type={"tel"}
+                      placeholder={"Please Enter Tel..."}
+                  />
                   <FormErrorMessage>
                     {errors.telephoneNumber && errors.telephoneNumber.message}
                   </FormErrorMessage>
@@ -325,7 +169,15 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="addressLine1">
                     Address Line 1 (Street)
                   </FormLabel>
-                  <InputFieldController inputFieldController={ controllerAddressLine1 }/>
+                  <InputFieldController
+                      id={"addressLine1"}
+                      name={"addressLine1"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      type={"text"}
+                      placeholder={"Please Enter Address Line 1 (Street)..."}
+                  />
                   <FormErrorMessage>
                     {errors.addressLine1 && errors.addressLine1.message}
                   </FormErrorMessage>
@@ -336,7 +188,15 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="addressLine2">
                     Address Line 2 (Road)
                   </FormLabel>
-                  <InputFieldController inputFieldController={ controllerAddressLine2 }/>
+                  <InputFieldController
+                      id={"addressLine2"}
+                      name={"addressLine2"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      type={"text"}
+                      placeholder={"Please Enter Address Line 2 (Road)..."}
+                  />
                   <FormErrorMessage>
                     {errors.addressLine2 && errors.addressLine2.message}
                   </FormErrorMessage>
@@ -345,7 +205,15 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.city}>
                   <FormLabel htmlFor="city">City</FormLabel>
-                  <InputFieldController inputFieldController={ controllerCity }/>
+                  <InputFieldController
+                      id={"city"}
+                      name={"city"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      type={"text"}
+                      placeholder={"Please Enter City..."}
+                  />
                   <FormErrorMessage>
                     {errors.city && errors.city.message}
                   </FormErrorMessage>
@@ -354,7 +222,15 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.postcode}>
                   <FormLabel htmlFor="postcode">Postcode / Zip</FormLabel>
-                  <InputFieldController inputFieldController={ controllerPostcode }/>
+                  <InputFieldController
+                      id={"postcode"}
+                      name={"postcode"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      type={"text"}
+                      placeholder={"Please Enter Postcode / Zip..."}
+                  />
                   <FormErrorMessage>
                     {errors.postcode && errors.postcode.message}
                   </FormErrorMessage>
@@ -363,7 +239,17 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.vehicleBodyType}>
                   <FormLabel htmlFor="vehicleBodyType">Vehicle Type</FormLabel>
-                  <SelectController selectController={ controllerVehicleBodyType }/>
+                  <SelectController
+                      className={"select"}
+                      id={"vehicleBodyType"}
+                      name={"vehicleBodyType"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      isInvalid={errors.vehicleBodyType}
+                      options={vehicleBodyTypeOptions}
+                      placeholder={"Select..."}
+                  />
                   <FormErrorMessage>
                     {errors.vehicleBodyType && errors.vehicleBodyType.message}
                   </FormErrorMessage>
@@ -372,7 +258,17 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.engineSize}>
                   <FormLabel htmlFor="engineSize">Engine Size</FormLabel>
-                  <SelectController selectController={ controllerEngineSize }/>
+                  <SelectController
+                      className={"select"}
+                      id={"engineSize"}
+                      name={"engineSize"}
+                      control={control}
+                      defaultValue={""}
+                      rules={validationRequiredField}
+                      isInvalid={errors.engineSize}
+                      options={engineSizeOptions}
+                      placeholder={"Select..."}
+                  />
                   <FormErrorMessage>
                     {errors.engineSize && errors.engineSize.message}
                   </FormErrorMessage>
@@ -383,7 +279,17 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="additionalDrivers">
                     Additional Drivers
                   </FormLabel>
-                  <NumberInputFieldController numberInputFieldController={controllerAdditionalDrivers}/>
+                  <NumberInputFieldController
+                      id={"additionalDrivers"}
+                      name={"additionalDrivers"}
+                      control={control}
+                      defaultValue={1}
+                      rules={validationAdditionalDrivers}
+                      minValue={0}
+                      maxValue={4}
+                      precision={0}
+                      clampValueOnBlur={false}
+                  />
                   <FormErrorMessage>
                     {errors.additionalDrivers &&
                       errors.additionalDrivers.message}
@@ -396,8 +302,24 @@ export default function QuoteForm() {
                     Will the vehicle be used for commercial purposes?
                   </FormLabel>
                   <div>
-                    <RadioInputField radioInputField={ registerCommercialUseYes} />
-                    <RadioInputField radioInputField={ registerCommercialUseNo} />
+                    <RadioInputField
+                        className={"radio-label"}
+                        htmlFor={"commercialUse-yes"}
+                        {...register("commercialUse", validationRequiredField)}
+                        type={"radio"}
+                        value={"Yes"}
+                        content={"Yes"}
+                        id={"commercialUse-yes"}
+                    />
+                    <RadioInputField
+                        className={"radio-label"}
+                        htmlFor={"commercialUse-no"}
+                        {...register("commercialUse", validationRequiredField)}
+                        type={"radio"}
+                        value={"No"}
+                        content={"No"}
+                        id={"commercialUse-no"}
+                    />
                   </div>
                   <FormErrorMessage>
                     {errors.commercialUse &&
@@ -411,8 +333,24 @@ export default function QuoteForm() {
                     Will the vehicle be used outside the registered state?
                   </FormLabel>
                   <div>
-                    <RadioInputField radioInputField={ registerOutsideStateUseYes} />
-                    <RadioInputField radioInputField={ registerOutsideStateUseNo} />
+                    <RadioInputField
+                        className={"radio-label"}
+                        htmlFor={"outsideStateUse-yes"}
+                        {...register("outsideStateUse", validationRequiredField)}
+                        type={"radio"}
+                        value={"Yes"}
+                        content={"Yes"}
+                        id={"outsideStateUse-yes"}
+                    />
+                    <RadioInputField
+                        className={"radio-label"}
+                        htmlFor={"outsideStateUse-no"}
+                        {...register("outsideStateUse", validationRequiredField)}
+                        type={"radio"}
+                        value={"No"}
+                        content={"No"}
+                        id={"outsideStateUse-no"}
+                    />
                   </div>
                   <FormErrorMessage>
                     {errors.outsideStateUse &&
@@ -425,7 +363,17 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="currentValue">
                     What is the current value of the vehicle ($0-$50,000)?
                   </FormLabel>
-                  <NumberInputFieldController numberInputFieldController={ controllerCurrentValue }/>
+                  <NumberInputFieldController
+                      id={"currentValue"}
+                      name={"currentValue"}
+                      control={control}
+                      defaultValue={0}
+                      rules={validationCurrentValue}
+                      minValue={0}
+                      maxValue={50000}
+                      precision={2}
+                      clampValueOnBlur={false}
+                  />
                   <FormErrorMessage>
                     {errors.currentValue && errors.currentValue.message}
                   </FormErrorMessage>
@@ -440,7 +388,17 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="dateRegistered">
                     Date vehicle was first registered?
                   </FormLabel>
-                  <DatePickerController datePickerController={ controllerDateRegistered }/>
+                  <DatePickerController
+                      className={"react-datapicker__input-text"}
+                      id={"dateRegistered"}
+                      name={"dateRegistered"}
+                      control={control}
+                      defaultValue={new Date()}
+                      rules={validationRequiredField}
+                      dateFormat={"dd/MM/yyyy"}
+                      filterDate={(date) => {
+                        return moment() > date;}}
+                  />
                   <FormErrorMessage>
                     {errors.dateRegistered && errors.dateRegistered.message}
                   </FormErrorMessage>

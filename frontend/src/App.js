@@ -27,18 +27,19 @@ function App() {
       <HashRouter>
         <Navbar />
         <Switch>
-            <Route exact path="/#" component={QuoteForm} />
-            <Route exact path="/admin" component={Admin} />
-            <Route path="/driver-details/:id" component={DriverDetails} />
-            <Route path="*" component={NotFound} />
+            <Route exact path="/">
+                <QuoteForm />
+            </Route>
+            <Route exact path="/admin">
+                <Admin />
+            </Route>
+            <Route path="/driver-details/:id">
+                <DriverDetails />
+            </Route>
         </Switch>
       </HashRouter>
     </ChakraProvider>
   );
-}
-
-function NotFound() {
-    return <>You have landed on a page that doesn't exist</>;
 }
 
 export default App;

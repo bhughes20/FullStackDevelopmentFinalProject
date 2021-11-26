@@ -8,24 +8,33 @@ import {
     NumberInputStepper
 } from "@chakra-ui/react";
 
-export const NumberInputFieldController = (props) => {
-
-    const numberInputFieldController = props.numberInputFieldController;
+export const NumberInputFieldController = (
+    {
+        id,
+        name,
+        control,
+        defaultValue,
+        rules,
+        minValue,
+        maxValue,
+        precision,
+        clampValueOnBlur
+    }) => {
 
     return(
         <Controller
-            id={numberInputFieldController.id}
-            name={numberInputFieldController.name}
-            control={numberInputFieldController.control}
-            defaultValue={numberInputFieldController.defaultValue}
-            rules={numberInputFieldController.rules}
+            id={id}
+            name={name}
+            control={control}
+            defaultValue={defaultValue}
+            rules={rules}
             render={({ field: { onChange, onBlur } }) => (
                 <NumberInput
-                    defaultValue={numberInputFieldController.defaultValue}
-                    min={numberInputFieldController.minValue}
-                    max={numberInputFieldController.maxValue}
-                    precision={numberInputFieldController.precision}
-                    clampValueOnBlur={numberInputFieldController.clampValueOnBlur}
+                    defaultValue={defaultValue}
+                    min={minValue}
+                    max={maxValue}
+                    precision={precision}
+                    clampValueOnBlur={clampValueOnBlur}
                     onChange={onChange}
                     onBlur={onBlur}
                 >
