@@ -2,7 +2,7 @@ import React from "react";
 import {Controller} from "react-hook-form";
 import {Select} from "chakra-react-select";
 
-export const SelectController  = (
+export const SelectController = (
     {
         className,
         id,
@@ -15,7 +15,7 @@ export const SelectController  = (
         options
     }) => {
 
-    return(
+    return (
         <Controller
             className={className}
             id={id}
@@ -23,12 +23,14 @@ export const SelectController  = (
             control={control}
             defaultValue={defaultValue}
             rules={rules}
-            render={({ field: {
+            render={({
+                         field: {
                              name,
                              value,
                              onBlur,
                              onChange,
-                             ref },
+                             ref
+                         },
                      }) => (
                 <Select
                     isInvalid={isInvalid}

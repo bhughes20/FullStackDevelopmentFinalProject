@@ -2,7 +2,7 @@ import React from "react";
 import {Controller} from "react-hook-form";
 import DatePicker from "react-datepicker";
 
-export const DatePickerController  = (
+export const DatePickerController = (
     {
         className,
         id,
@@ -14,7 +14,7 @@ export const DatePickerController  = (
         filterDate
     }) => {
 
-    return(
+    return (
         <Controller
             className={className}
             id={id}
@@ -22,11 +22,11 @@ export const DatePickerController  = (
             control={control}
             rules={rules}
             defaultValue={defaultValue}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({field: {onChange, onBlur, value}}) => (
                 <DatePicker
                     dateFormat={dateFormat}
                     selected={value}
-                    filterDate = {filterDate}
+                    filterDate={filterDate}
                     onChange={onChange}
                     onBlur={onBlur}
                 />

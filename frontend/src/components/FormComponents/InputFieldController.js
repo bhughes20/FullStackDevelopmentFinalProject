@@ -13,14 +13,14 @@ export const InputFieldController = (
         type
     }) => {
 
-    return(
+    return (
         <Controller
             id={id}
             name={name}
             control={control}
             defaultValue={defaultValue}
             rules={rules}
-            render={({ field: { value, onChange, onBlur } }) => (
+            render={({field: {value, onChange, onBlur}}) => (
                 <Input
                     type={type}
                     value={value}

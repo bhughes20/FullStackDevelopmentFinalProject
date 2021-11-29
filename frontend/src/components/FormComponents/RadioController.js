@@ -16,14 +16,14 @@ export const RadioController = (
         isInvalid
     }) => {
 
-    return(
+    return (
         <Controller
             id={id}
             control={control}
             name={name}
             defaultValue={defaultValue}
             rules={rules}
-            render={({ field: { value, onChange, onBlur } }) => (
+            render={({field: {value, onChange, onBlur}}) => (
                 <RadioGroup
                     value={value}
                     onChange={(val) => onChange(val)}

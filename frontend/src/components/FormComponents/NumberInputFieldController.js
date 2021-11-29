@@ -21,14 +21,14 @@ export const NumberInputFieldController = (
         clampValueOnBlur
     }) => {
 
-    return(
+    return (
         <Controller
             id={id}
             name={name}
             control={control}
             defaultValue={defaultValue}
             rules={rules}
-            render={({ field: { onChange, onBlur } }) => (
+            render={({field: {onChange, onBlur}}) => (
                 <NumberInput
                     defaultValue={defaultValue}
                     min={minValue}
@@ -38,10 +38,10 @@ export const NumberInputFieldController = (
                     onChange={onChange}
                     onBlur={onBlur}
                 >
-                    <NumberInputField />
+                    <NumberInputField/>
                     <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
+                        <NumberIncrementStepper/>
+                        <NumberDecrementStepper/>
                     </NumberInputStepper>
                 </NumberInput>
             )}
