@@ -15,17 +15,19 @@ import NotFound from "../NotFound/NotFound";
 export default function DriverDetails() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const url = `/api/drivers/${id}`;
+    setLoading(true);
     axios
       .get(url)
       .then((response) => setData(response.data))
-      .catch((err) => {
-        console.log(err);
-      });
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, [id]);
 
+  if (loading) return <heading>Loading...</heading>;
   if (!data) return <NotFound/>;
 
   return (
