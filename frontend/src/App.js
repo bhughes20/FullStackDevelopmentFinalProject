@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import QuoteForm from "./components/QuoteForm/QuoteForm";
 import Admin from "./components/Admin/Admin";
 import DriverDetails from "./components/DriverDetails/DriverDetails";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/driver-details/:id">
                 <DriverDetails />
+            </Route>
+            <Route>
+                <NotFound />
             </Route>
         </Switch>
       </HashRouter>

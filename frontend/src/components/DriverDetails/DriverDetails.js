@@ -10,6 +10,7 @@ import {
   HStack,
   Text,
 } from "@chakra-ui/react";
+import NotFound from "../NotFound/NotFound";
 
 export default function DriverDetails() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export default function DriverDetails() {
       });
   }, [id]);
 
-  if (!data) return null;
+  if (!data) return <NotFound/>;
 
   return (
     <Container maxWidth="container.xl" padding={0} centerContent>
