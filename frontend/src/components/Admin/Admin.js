@@ -13,7 +13,12 @@ import UpdateRecord from "./UpdateRecord/UpdateRecord";
 export default function Admin() {
 
     return (
-        <Container maxWidth="container.xl" padding={0} centerContent>
+        <Container
+            maxWidth="container.xl"
+            padding={0}
+            centerContent
+            bgColor="blue.200"
+        >
             <Flex
                 bgColor="indigo.400"
                 color={"white"}

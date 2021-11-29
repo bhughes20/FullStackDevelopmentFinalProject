@@ -69,7 +69,7 @@ export default function QuoteForm() {
     };
 
     return (
-        <Container maxWidth="container.xl" padding={0}>
+        <Container maxWidth="container.xl" padding={0} bgColor="indigo.400">
             <Flex
                 bgColor="indigo.400"
                 h={{base: "auto", md: "full"}}

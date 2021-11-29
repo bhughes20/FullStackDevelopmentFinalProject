@@ -31,7 +31,11 @@ export default function DriverDetails() {
     if (!data) return <NotFound/>;
 
     return (
-        <Container maxWidth="container.xl" padding={0} centerContent>
+        <Container maxWidth="container.xl"
+                   padding={0}
+                   centerContent
+                   bgColor="indigo.400"
+        >
             <Flex
                 bgColor="indigo.400"
                 color={"white"}
