@@ -1,66 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800");
 
-.radio-label {
-    display: inline;
-    position: relative;
-    padding-left: 35px;
-    margin-left: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .radio-label input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 17px;
-    width: 17px;
-    background-color: #fff;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: rgb(226, 232, 240);
-    border-width: 1px;
-  }
-  
-  .radio-label:hover input ~ .checkmark {
-    background-color: #94a1b0;
-  }
-  
-  .radio-label input:checked ~ .checkmark {
-    background-color: #45bce5;
-  }
-  
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .radio-label input:checked ~ .checkmark:after {
-    display: block;
-  }
-
-  .radio-label .checkmark:after {
-    top: 5px;
-    left: 5px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: white;
-  }
-
 .light-theme {
   --light-gray: var(--chakra-colors-gray-200);
   --gray: var(--chakra-colors-gray-300);
@@ -183,21 +122,21 @@
 .react-datepicker__month-text--in-selecting-range,
 .react-datepicker__month-text--in-range,
 .react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box
-  ul.react-datepicker__time-list
-  li.react-datepicker__time-list-item--selected {
-  background: var(--blue600);
-  font-weight: normal;
-  color: var(--negative-text);
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item--selected {
+      background: var(--blue600);
+      font-weight: normal;
+      color: var(--negative-text);
 }
 
 .react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box
-  ul.react-datepicker__time-list
-  li.react-datepicker__time-list-item--selected:hover {
-  background: var(--blue700);
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item--selected:hover {
+      background: var(--blue700);
 }
 
 .react-datepicker__close-icon::after {
