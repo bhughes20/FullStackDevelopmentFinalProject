@@ -27,7 +27,7 @@ export default function DriverDetails() {
       .catch(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <heading>Loading...</heading>;
+  if (loading) return <Heading>Loading...</Heading>;
   if (!data) return <NotFound/>;
 
   return (
