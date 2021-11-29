@@ -5,6 +5,7 @@ import { prefixOptions, vehicleBodyTypeOptions, engineSizeOptions } from "./Sele
 import moment from 'moment';
 import {
   Container,
+  Divider,
   Flex,
   VStack,
   Heading,
@@ -90,6 +91,10 @@ export default function QuoteForm() {
               rowGap={6}
               w="full"
             >
+              <GridItem colSpan={6} mb={3}>
+                <Heading size="lg">About You...</Heading>
+                <Divider/>
+              </GridItem>
               <GridItem colSpan={colSpan1}>
                 <FormControl isRequired isInvalid={errors.prefix}>
                   <FormLabel htmlFor="prefix">Prefix</FormLabel>
@@ -235,6 +240,10 @@ export default function QuoteForm() {
                   </FormErrorMessage>
                 </FormControl>
               </GridItem>
+              <GridItem colSpan={6} my={3}>
+                <Heading size="lg">About Your Vehicle...</Heading>
+                <Divider/>
+              </GridItem>
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.vehicleBodyType}>
                   <FormLabel htmlFor="vehicleBodyType">Vehicle Type</FormLabel>
@@ -317,7 +326,7 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.outsideStateUse}>
                   <FormLabel htmlFor="outsideStateUse">
-                    Will the vehicle be used outside the registered state?
+                    Will the vehicle be used out of the registered state?
                   </FormLabel>
                     <RadioController isRequired
                         id={"outsideStateUse"}
@@ -335,7 +344,7 @@ export default function QuoteForm() {
               <GridItem colSpan={colSpan2}>
                 <FormControl isRequired isInvalid={errors.currentValue}>
                   <FormLabel htmlFor="currentValue">
-                    What is the current value of the vehicle ($0-$50,000)?
+                    What is the current value ($0-$50,000)?
                   </FormLabel>
                   <NumberInputFieldController
                       id={"currentValue"}
@@ -379,7 +388,7 @@ export default function QuoteForm() {
                 </FormControl>
               </GridItem>
               <GridItem colSpan={6}>
-                <Button type="submit" size="lg" w="50%">
+                <Button type="submit" size="lg" w="50%" my={5}>
                   Submit
                 </Button>
               </GridItem>
