@@ -22,7 +22,7 @@ public class DriverController {
 
     @GetMapping("/drivers/{id}")
     Driver getDriverById(@PathVariable Long id) {
-        try{
+        try {
             return service.getDriverById(id);
         } catch (NoSuchElementException noSuchElementException) {
             throw new ResponseStatusException(
@@ -31,16 +31,18 @@ public class DriverController {
     }
 
     @GetMapping("/drivers")
-    List<Driver> getAllDrivers(){ return service.getAllDrivers(); }
+    List<Driver> getAllDrivers() {
+        return service.getAllDrivers();
+    }
 
     @PostMapping("/drivers")
-    Driver postDriver(@RequestBody Driver driver){
+    Driver postDriver(@RequestBody Driver driver) {
         return service.postDriver(driver);
     }
 
     @PutMapping("/drivers/{id}")
-    Driver updateDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id){
-        try{
+    Driver updateDriverById(@RequestBody Driver driverToUpdate, @PathVariable Long id) {
+        try {
             return service.updateDriverById(driverToUpdate, id);
         } catch (NoSuchElementException noSuchElementException) {
             throw new ResponseStatusException(
@@ -49,8 +51,8 @@ public class DriverController {
     }
 
     @DeleteMapping("/drivers/{id}")
-    void deleteDriverById(@PathVariable Long id){
-        try{
+    void deleteDriverById(@PathVariable Long id) {
+        try {
             service.getDriverById(id);
         } catch (NoSuchElementException noSuchElementException) {
             throw new ResponseStatusException(

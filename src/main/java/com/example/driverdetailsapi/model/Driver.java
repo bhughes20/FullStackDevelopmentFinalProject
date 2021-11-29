@@ -16,7 +16,7 @@ import java.util.Locale;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity (name = "DRIVER_DETAILS")
+@Entity(name = "DRIVER_DETAILS")
 public class Driver {
 
     @Id
@@ -39,12 +39,12 @@ public class Driver {
     private Date dateRegistered;
     private double finalQuoteAmount;
 
-    public String formatDateRegistered(){
+    public String formatDateRegistered() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(dateRegistered);
     }
 
-    public String formatCurrency(double value){
+    public String formatCurrency(double value) {
         Locale locale = new Locale("en", "US");
         NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
         return formatter.format(value);

@@ -71,17 +71,17 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenValidEngineSizeOf1000_thenCorrectEngineSizeFactorShouldBeReturned(){
+    public void whenValidEngineSizeOf1000_thenCorrectEngineSizeFactorShouldBeReturned() {
         assertEquals(1.0, EngineSizeFactor.calculateEngineSizeFactor(validEngineSize1));
     }
 
     @Test
-    public void whenValidEngineSizeOfOther_thenCorrectEngineSizeFactorShouldBeReturned(){
+    public void whenValidEngineSizeOfOther_thenCorrectEngineSizeFactorShouldBeReturned() {
         assertEquals(3.5, EngineSizeFactor.calculateEngineSizeFactor(validEngineSize2));
     }
 
     @Test
-    public void whenInvalidEngineSize_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidEngineSize_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> EngineSizeFactor.calculateEngineSizeFactor(invalidEngineSize));
 
@@ -92,17 +92,17 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenValidAdditionalDriversOf1_thenCorrectAdditionalDriversFactorShouldBeReturned(){
+    public void whenValidAdditionalDriversOf1_thenCorrectAdditionalDriversFactorShouldBeReturned() {
         assertEquals(1.1, AdditionalDriversFactor.calculateAdditionalDriversFactor(validAdditionalDrivers1));
     }
 
     @Test
-    public void whenValidAdditionalDriversOf2_thenCorrectAdditionalDriversFactorShouldBeReturned(){
+    public void whenValidAdditionalDriversOf2_thenCorrectAdditionalDriversFactorShouldBeReturned() {
         assertEquals(1.2, AdditionalDriversFactor.calculateAdditionalDriversFactor(validAdditionalDrivers2));
     }
 
     @Test
-    public void whenInvalidAdditionalDriversOf5_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidAdditionalDriversOf5_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> AdditionalDriversFactor.calculateAdditionalDriversFactor(invalidAdditionalDrivers1));
 
@@ -113,7 +113,7 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenInvalidAdditionalDriversOfNegative1_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidAdditionalDriversOfNegative1_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> AdditionalDriversFactor.calculateAdditionalDriversFactor(invalidAdditionalDrivers2));
 
@@ -124,17 +124,17 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenValidCommercialUseOfYes_thenCorrectCommercialUseFactorShouldBeThrown(){
+    public void whenValidCommercialUseOfYes_thenCorrectCommercialUseFactorShouldBeThrown() {
         assertEquals(1.1, CommercialUseFactor.calculateCommercialUseFactor(validCommercialUse1));
     }
 
     @Test
-    public void whenValidCommercialUseOfNo_thenCorrectCommercialUseFactorShouldBeThrown(){
+    public void whenValidCommercialUseOfNo_thenCorrectCommercialUseFactorShouldBeThrown() {
         assertEquals(1.0, CommercialUseFactor.calculateCommercialUseFactor(validCommercialUse2));
     }
 
     @Test
-    public void whenInvalidCommercialUse_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidCommercialUse_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> CommercialUseFactor.calculateCommercialUseFactor(invalidCommercialUse));
 
@@ -145,17 +145,17 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenValidOutsideStateUseOfYes_thenCorrectOutsideStateUseFactorShouldBeThrown(){
+    public void whenValidOutsideStateUseOfYes_thenCorrectOutsideStateUseFactorShouldBeThrown() {
         assertEquals(1.1, OutsideStateUseFactor.calculateOutsideStateUseFactor(validOutsideStateUse1));
     }
 
     @Test
-    public void whenValidOutsideStateUseOfNo_thenCorrectOutsideStateUseFactorShouldBeThrown(){
+    public void whenValidOutsideStateUseOfNo_thenCorrectOutsideStateUseFactorShouldBeThrown() {
         assertEquals(1.0, OutsideStateUseFactor.calculateOutsideStateUseFactor(validOutsideStateUse2));
     }
 
     @Test
-    public void whenInvalidOutsideStateUse_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidOutsideStateUse_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> OutsideStateUseFactor.calculateOutsideStateUseFactor(invalidOutsideStateUse));
 
@@ -166,17 +166,17 @@ public class TestFactorsTest {
     }
 
     @Test
-    public void whenValidVehicleValueOf4999_thenCorrectVehicleValueFactorShouldBeReturned(){
+    public void whenValidVehicleValueOf4999_thenCorrectVehicleValueFactorShouldBeReturned() {
         assertEquals(1.0, VehicleValueFactor.calculateVehicleValueFactor(validVehicleValue1));
     }
 
     @Test
-    public void whenValidVehicleValueOf5000And99c_thenCorrectVehicleValueFactorShouldBeReturned(){
+    public void whenValidVehicleValueOf5000And99c_thenCorrectVehicleValueFactorShouldBeReturned() {
         assertEquals(1.2, VehicleValueFactor.calculateVehicleValueFactor(validVehicleValue2));
     }
 
     @Test
-    public void whenInvalidVehicleValue_thenIllegalArgumentExceptionShouldBeThrown(){
+    public void whenInvalidVehicleValue_thenIllegalArgumentExceptionShouldBeThrown() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> VehicleValueFactor.calculateVehicleValueFactor(invalidVehicleValue));
 

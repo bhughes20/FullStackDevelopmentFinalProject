@@ -5,7 +5,7 @@ public class VehicleTypeFactor {
     public static double calculateVehicleTypeFactor(String vehicleType) {
 
         String vehicleTypeToUpperCase = vehicleType.toUpperCase();
-        switch (vehicleTypeToUpperCase){
+        switch (vehicleTypeToUpperCase) {
             case "CABRIOLET":
                 return 1.3;
             case "COUPE":

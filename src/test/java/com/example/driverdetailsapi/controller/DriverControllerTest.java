@@ -34,7 +34,7 @@ class DriverControllerTest {
     private ObjectMapper objectMapper;
 
     String prefix, firstName, lastName, telephoneNumber, updatedTelephoneNumber, addressLine1, addressLine2, city, postcode,
-    vehicleBodyType, engineSize, commercialUse, outsideStateUse;
+            vehicleBodyType, engineSize, commercialUse, outsideStateUse;
     int additionalDrivers;
     double currentValue, finalQuoteAmount;
     Date dateRegistered;
@@ -63,7 +63,7 @@ class DriverControllerTest {
         commercialUse = "yes";
         outsideStateUse = "yes";
         currentValue = 45000.00;
-        dateRegistered =new SimpleDateFormat("dd/MM/yyyy").parse("23/12/1910");
+        dateRegistered = new SimpleDateFormat("dd/MM/yyyy").parse("23/12/1910");
         finalQuoteAmount = 0.00;
 
         driver = new Driver(null, prefix, firstName, lastName, telephoneNumber,
@@ -114,7 +114,8 @@ class DriverControllerTest {
 
         final String contentAsString = mvcResult.getResponse().getContentAsString();
 
-        List<Driver> driversFromDB = objectMapper.readValue(contentAsString, new TypeReference<>(){});
+        List<Driver> driversFromDB = objectMapper.readValue(contentAsString, new TypeReference<>() {
+        });
 
         assertEquals(4, driversFromDB.size());
     }
@@ -179,9 +180,9 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         mockMvc.perform(post("/api/drivers")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(driverJSON)
-                )
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(driverJSON)
+        )
                 .andDo(print())
                 .andExpect(status().isOk());
 
@@ -193,9 +194,9 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         mockMvc.perform(post("/api/nonExistingEndpoint")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(driverJSON)
-                )
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(driverJSON)
+        )
                 .andDo(print())
                 .andExpect(status().is(404));
     }
@@ -237,9 +238,9 @@ class DriverControllerTest {
         final String driverJSON = objectMapper.writeValueAsString(driver);
 
         mockMvc.perform(put("/api/drivers/" + existingId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(driverJSON)
-                )
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(driverJSON)
+        )
                 .andDo(print())
                 .andExpect(status().isOk());
     }
@@ -288,8 +289,8 @@ class DriverControllerTest {
     void givenDBInitialisedWith4Drivers_whenDeleteDriverByExistingId_thenStatusShouldReturn200() throws Exception {
 
         mockMvc.perform(delete("/api/drivers/" + existingId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                )
+                .contentType(MediaType.APPLICATION_JSON)
+        )
                 .andDo(print())
                 .andExpect(status().isOk());
     }

@@ -4,7 +4,7 @@ public class AdditionalDriversFactor {
 
     public static double calculateAdditionalDriversFactor(int additionalDrivers) {
 
-        if(additionalDrivers >= 0 && additionalDrivers < 2){
+        if (additionalDrivers >= 0 && additionalDrivers < 2) {
             return 1.1;
         } else if (additionalDrivers >= 2 && additionalDrivers <= 4) {
             return 1.2;

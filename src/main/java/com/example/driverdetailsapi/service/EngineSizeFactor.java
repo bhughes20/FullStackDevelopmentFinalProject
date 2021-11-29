@@ -6,7 +6,7 @@ public class EngineSizeFactor {
 
         String engineSizeToUpperCase = engineSize.toUpperCase();
 
-        switch(engineSizeToUpperCase){
+        switch (engineSizeToUpperCase) {
             case "1000":
                 return 1.0;
             case "1600":
