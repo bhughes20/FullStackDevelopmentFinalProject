@@ -30,12 +30,11 @@ import {
 import { InputFieldController } from "../FormComponents/InputFieldController";
 import { SelectController } from "../FormComponents/SelectController";
 import { NumberInputFieldController } from "../FormComponents/NumberInputFieldController";
-import { RadioInputField } from "../FormComponents/RadioInputField";
+import { RadioController } from "../FormComponents/RadioController";
 import { DatePickerController } from "../FormComponents/DatePickerController";
 
 export default function QuoteForm() {
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
@@ -301,26 +300,14 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="commercialUse">
                     Will the vehicle be used for commercial purposes?
                   </FormLabel>
-                  <div>
-                    <RadioInputField
-                        className={"radio-label"}
-                        htmlFor={"commercialUse-yes"}
-                        {...register("commercialUse", validationRequiredField)}
-                        type={"radio"}
-                        value={"Yes"}
-                        content={"Yes"}
-                        id={"commercialUse-yes"}
+                    <RadioController
+                        isInvalid = {errors.commercialUse}
+                        id={"commercialUse"}
+                        name={"commercialUse"}
+                        control={control}
+                        defaultValue={""}
+                        rules={validationRequiredField}
                     />
-                    <RadioInputField
-                        className={"radio-label"}
-                        htmlFor={"commercialUse-no"}
-                        {...register("commercialUse", validationRequiredField)}
-                        type={"radio"}
-                        value={"No"}
-                        content={"No"}
-                        id={"commercialUse-no"}
-                    />
-                  </div>
                   <FormErrorMessage>
                     {errors.commercialUse &&
                       errors.commercialUse.message}
@@ -332,26 +319,13 @@ export default function QuoteForm() {
                   <FormLabel htmlFor="outsideStateUse">
                     Will the vehicle be used outside the registered state?
                   </FormLabel>
-                  <div>
-                    <RadioInputField
-                        className={"radio-label"}
-                        htmlFor={"outsideStateUse-yes"}
-                        {...register("outsideStateUse", validationRequiredField)}
-                        type={"radio"}
-                        value={"Yes"}
-                        content={"Yes"}
-                        id={"outsideStateUse-yes"}
+                    <RadioController isRequired
+                        id={"outsideStateUse"}
+                        name={"outsideStateUse"}
+                        control={control}
+                        defaultValue={""}
+                        rules={validationRequiredField}
                     />
-                    <RadioInputField
-                        className={"radio-label"}
-                        htmlFor={"outsideStateUse-no"}
-                        {...register("outsideStateUse", validationRequiredField)}
-                        type={"radio"}
-                        value={"No"}
-                        content={"No"}
-                        id={"outsideStateUse-no"}
-                    />
-                  </div>
                   <FormErrorMessage>
                     {errors.outsideStateUse &&
                       errors.outsideStateUse.message}
@@ -389,7 +363,7 @@ export default function QuoteForm() {
                     Date vehicle was first registered?
                   </FormLabel>
                   <DatePickerController
-                      className={"react-datapicker__input-text"}
+                      className={"react-datepicker__input-text"}
                       id={"dateRegistered"}
                       name={"dateRegistered"}
                       control={control}
