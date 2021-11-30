@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800");
+@import "~react-datepicker/dist/react-datepicker.css";
 
-body{
+body {
     background-color: #273054;
 }
 
@@ -41,7 +42,7 @@ body{
     background-color: var(--chakra-colors-white);
 }
 
-.react-datapicker__input-text, .react-select-container {
+.react-datepicker__input-text, .react-select-container {
     background-color: var(--chakra-colors-white);
 }
 
