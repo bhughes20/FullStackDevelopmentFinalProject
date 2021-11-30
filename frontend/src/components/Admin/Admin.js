@@ -3,7 +3,8 @@ import {
     Container,
     Flex,
     VStack,
-    Heading, SimpleGrid, Text,
+    Heading,
+    Text,
 } from "@chakra-ui/react";
 import DeleteRecord from "./DeleteRecord/DeleteRecord";
 import GetRecord from "./GetRecord/GetRecord";

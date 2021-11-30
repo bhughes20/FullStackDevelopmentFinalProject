@@ -31,7 +31,7 @@ export default function UpdateRecord() {
     });
 
     const populateUpdateData = (data, newTelephoneNumber) => {
-        const updateData = {
+        return {
             prefix: data.prefix,
             firstName: data.firstName,
             lastName: data.lastName,
@@ -49,8 +49,6 @@ export default function UpdateRecord() {
             dateRegistered: data.dateRegistered,
             id: data.id,
         };
-
-        return updateData;
     };
 
     function updateDriverData(url, updateData) {
@@ -59,15 +57,13 @@ export default function UpdateRecord() {
         axios
             .put(url, updateData)
             .then((response) => {
-                console.log(response.data);
                 if (response.status >= 200 && response.status < 300) {
                     toast.success(`Telephone Number for Driver ID ${id} has been updated to ${updateData.telephoneNumber}`, {
                         onClose: () => history.push(redirectEndpoint),
                     })
                 }
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
                 toast.error("Oops, something went wrong!")
             });
     }
@@ -122,7 +118,7 @@ export default function UpdateRecord() {
                         isRequired
                         isInvalid={errors.driverId}
                     >
-                        <FormLabel htmlFor="updateDriverId">Driver ID</FormLabel>
+                        <FormLabel htmlFor="driverId">Driver ID</FormLabel>
                         <InputFieldController
                             id={"driverId"}
                             name={"driverId"}
