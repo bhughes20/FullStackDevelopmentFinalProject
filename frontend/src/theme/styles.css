@@ -6,18 +6,10 @@ body {
 }
 
 .light-theme {
-    --light-gray: var(--chakra-colors-gray-200);
-    --gray: var(--chakra-colors-gray-300);
-    --blue700: var(--chakra-colors-blue-600);
-    --blue600: var(--chakra-colors-blue-500);
-    --blue500: var(--chakra-colors-gray-400);
-    --blue400: var(--chakra-colors-gray-300);
-    --blue300: var(--chakra-colors-gray-200);
-    --blue200: var(--chakra-colors-gray-200);
-    --blue100: var(--chakra-colors-gray-100);
-    --monthBackground: var(--chakra-colors-white);
-    --text: var(--chakra-colors-black);
-    --negative-text: var(--chakra-colors-white);
+    --light-gray: #f9fbfc;
+    --gray: #e3e9ed;
+    --blue500: #0033a0;
+    --white: #ffffff;
 }
 
 .react-datepicker {
@@ -39,11 +31,11 @@ body {
     border-radius: 0.25rem;
     border: 1px solid;
     border-color: var(--light-gray);
-    background-color: var(--chakra-colors-white);
+    background-color: var(--white);
 }
 
 .react-datepicker__input-text, .react-select-container {
-    background-color: var(--chakra-colors-white);
+    background-color: var(--white);
 }
 
 .react-datepicker__input-container:hover, .react-select-container:hover {
@@ -52,8 +44,8 @@ body {
 
 .react-datepicker__input-container:focus-within, .react-select-container:focus-within {
     z-index: 1;
-    border-color: var(--blue600);
-    box-shadow: 0 0 0 1px var(--blue600);
+    border-color: var(--blue500);
+    box-shadow: 0 0 0 1px var(--blue500);
 }
 
 .react-datepicker__input-container > input {
