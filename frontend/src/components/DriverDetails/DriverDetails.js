@@ -52,7 +52,7 @@ export default function DriverDetails() {
 
                     <VStack
                         spacing={1}
-                        p={3}
+                        p={5}
                         bgColor="blue.100"
                         color={"indigo.600"}
                         alignItems="stretch"
@@ -78,7 +78,7 @@ export default function DriverDetails() {
 
                     <VStack
                         spacing={1}
-                        p={3}
+                        p={5}
                         bgColor="blue.100"
                         color={"indigo.600"}
                         alignItems="stretch"
@@ -112,7 +112,7 @@ export default function DriverDetails() {
 
                     <VStack
                         spacing={1}
-                        p={3}
+                        p={5}
                         bgColor="blue.100"
                         color={"indigo.600"}
                         alignItems="stretch"
@@ -163,7 +163,7 @@ export default function DriverDetails() {
                     </VStack>
                     <VStack
                         spacing={1}
-                        p={3}
+                        p={5}
                         bgColor="blue.100"
                         color={"indigo.600"}
                         alignItems="stretch"
