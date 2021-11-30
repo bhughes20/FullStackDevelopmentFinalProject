@@ -40,7 +40,6 @@ const theme = extendTheme({
             }
 
         },
-
         fonts: {
             heading: `Montserrat, ${base.fonts?.heading}`,
             body: `Inter, ${base.fonts?.body}`
@@ -62,6 +61,16 @@ const theme = extendTheme({
                             bg: "#fff"
                         }
                     }
+                }
+            },
+            Radio: {
+                variants: {
+                        control: {
+                            bg: "#fff",
+                            borderRadius: 1,
+                            borderWidth: 5,
+                            borderColor: "indigo.400"
+                        }
                 }
             }
         }

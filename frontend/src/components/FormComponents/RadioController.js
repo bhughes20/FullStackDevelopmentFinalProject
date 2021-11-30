@@ -30,8 +30,22 @@ export const RadioController = (
                     onBlur={(val) => onBlur(val)}
                 >
                     <Stack direction='row'>
-                        <Radio isInvalid={isInvalid} value='Yes'>Yes</Radio>
-                        <Radio isInvalid={isInvalid} value='No'>No</Radio>
+                        <Radio
+                            isInvalid={isInvalid}
+                            value='Yes'
+                            bg={"blue.200"}
+                            borderColor={"indigo.400"}
+                        >
+                            Yes
+                        </Radio>
+                        <Radio
+                            isInvalid={isInvalid}
+                            value='No'
+                            bg={"blue.200"}
+                            borderColor={"indigo.400"}
+                        >
+                            No
+                        </Radio>
                     </Stack>
                 </RadioGroup>
             )}
