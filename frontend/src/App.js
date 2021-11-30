@@ -1,6 +1,6 @@
 import theme from "./theme/Theme";
 import "./theme/styles.css";
-import "react-datepicker/src/stylesheets/datepicker.scss";
+import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
 import {ToastContainer} from "react-toastify";
 import {ChakraProvider} from "@chakra-ui/react";

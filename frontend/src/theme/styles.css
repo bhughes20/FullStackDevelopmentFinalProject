@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800");
-@import "~react-datepicker/dist/react-datepicker.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/4.4.0/react-datepicker.min.css");
 
 body {
     background-color: #273054;
