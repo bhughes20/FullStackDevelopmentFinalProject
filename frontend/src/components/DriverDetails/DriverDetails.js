@@ -27,7 +27,17 @@ export default function DriverDetails() {
             .catch(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <Heading>Loading...</Heading>;
+    if (loading) return (
+        <Container maxWidth="container.xl"
+                   padding={0}
+                   centerContent
+                   bgColor="indigo.400"
+                   color={"white"}
+        >
+            <Heading>Loading...</Heading>
+        </Container>
+    );
+
     if (!data) return <NotFound/>;
 
     return (
